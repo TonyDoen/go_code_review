@@ -53,7 +53,7 @@ func main() {
 	cir1 := Circle{10.0}
 	fmt.Println(cir1, cir1.area(), cir1.perim())
 
-	//measure(rec) //error, (r *Rect) area() float64, "r *Rect"
-	//measure(rec2)
+	// measure(rec) //error, (r *Rect) area() float64, "r *Rect"
+	measure(rec2) // bingo, "rec2 := &rec"
 	measure(cir1) // bingo.
 }
