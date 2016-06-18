@@ -1,3 +1,12 @@
+go 基本知识中
+    go 通过package 来组织程序
+    go 只有 package 为main 的包 可以包含 main 函数
+    go 一个可执行程序 有且仅有 一个main 包
+    go 通过 import 关键字 导入非 main 包 注：别名 import . fmt vs. import io fmt
+       通过 const  关键子 进行常量定义   注：首字母小写 private, 
+       通过 var    关键子 来进行全局变量的声明与赋值
+       通过 type   关键字 进行 struct , interface 的声明
+       通过 func   关键字 进行函数声明...注：函数名首字母小写 private, 函数名首字母大写 public 
 
 go 中切片 slice
     本身不是数组，切片指向底层数组，作为变长数组的替代方案，可关联底层数组的局部或全部
@@ -24,6 +33,8 @@ go 中函数 function
     
     定义函数使用 func，且左大括号不能另起一行，
     函数可以作为一种类型使用
+
+go 中类的 method
     
 go 中关键字 defer
     执行方式类似java，c++中的析构函数，函数体执行结束后 按照调用顺序的 相反顺序 逐一执行
