@@ -9,9 +9,10 @@ func main() {
 	// array
 	var a [5]int
 	b := [5]int{1, 2, 3, 4, 5}
+	c := [...]string{"'abc'", "'cde'"}
 
 	a[4] = 6
-	fmt.Println(a, b)
+	fmt.Println(a, b, c)
 
 	var tarr [2][3]int
 	for i := 0; i < 2; i++ {

@@ -12,6 +12,7 @@ const (
 
 func main() {
 	fmt.Println(str1, str2)
+	// str1 = "hahaha" // error
 	const (
 		n = 5000000
 		d = 3e20 / n
