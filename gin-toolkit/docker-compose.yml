@@ -1,0 +1,49 @@
+version: "3"
+services:
+  mysql:
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+      - --default-time-zone=SYSTEM
+      - --log-timestamps=SYSTEM
+      - --max-connections=10240
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234567890///
+      TZ: Asia/Shanghai
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+    restart: always
+
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379:6379
+    environment:
+      - TZ=Asia/Shanghai
+
+  nsqlookupd:
+    image: nsqio/nsq
+    command: /nsqlookupd
+    ports:
+      - 4160:4160
+      - 4161:4161
+  nsqd:
+    image: nsqio/nsq
+    command: /nsqd --lookupd-tcp-address=nsqlookupd:4160
+    depends_on:
+      - nsqlookupd
+    ports:
+      - 4150:4150
+      - 4151:4151
+
+  nsqadmin:
+    image: nsqio/nsq
+    command: /nsqadmin --lookupd-http-address=nsqlookupd:4161
+    depends_on:
+      - nsqlookupd
+    ports:
+      - 4171:4171

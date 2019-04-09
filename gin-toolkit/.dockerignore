@@ -1,0 +1,24 @@
+# 在docker构建的时候忽略的一些文件，包括dockerfile中的COPY、ADD命令都会忽略这些文件
+# git
+.git
+
+# phpstorm project files
+.idea
+
+# netbeans project files
+nbproject
+
+# zend studio for eclipse project files
+.buildpath
+.project
+.settings
+
+# sublime text project / workspace files
+*.sublime-project
+*.sublime-workspace
+
+# windows thumbnail cache
+Thumbs.db
+
+# Mac DS_Store Files
+.DS_Store
