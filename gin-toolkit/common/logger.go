@@ -64,7 +64,6 @@ func Debug4Logger(c *gin.Context, format string, value ...interface{}) {
 	}
 }
 
-
 func InfoLogger(c *gin.Context, value ...interface{}) {
 	if c != nil {
 		Logger(c).Info(value...)
@@ -145,7 +144,6 @@ func StackLogger(c *gin.Context, err error) {
 
 	log.Printf("%s\n-------------------stack-start-------------------\n%+v\n-------------------stack-end-------------------\n", string(info), err)
 }
-
 
 func LoggerTemplate() gin.HandlerFunc {
 	return func(c *gin.Context) {

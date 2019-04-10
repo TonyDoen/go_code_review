@@ -1,12 +1,12 @@
 package demo
 
 import (
+	"../../common"
 	"../../conf/data"
 	"../../model"
 	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"go_code_review/gin-toolkit/common"
 	"time"
 )
 
@@ -14,7 +14,7 @@ const duration = 15 * time.Minute
 
 func Call(c *gin.Context, empName string, cityId int) (empNameRes string, cityIdRes int, err error) {
 
-	var one = model.Demo{Name: "xiaoming", Desc:"2333", CreateTime:time.Now()}
+	var one = model.Demo{Name: "xiaoming", Desc: "2333", CreateTime: time.Now()}
 	err = one.Insert()
 	if nil != err {
 		return empNameRes, cityIdRes, err
@@ -53,13 +53,24 @@ func GetAll(c *gin.Context) (res []model.Demo, err error) {
 
 	for i, one := range res {
 		if 1 == i {
-			err = model.UpdateDescByName(fmt.Sprintf("第%d名",i), one.Name)
+			err = model.UpdateDescByName(fmt.Sprintf("第%d名", i), one.Name)
 		} else {
-			one.Desc = fmt.Sprintf("第%d名",i)
-			one.Name = fmt.Sprintf("第%d名的%s",i, one.Name)
+			one.Desc = fmt.Sprintf("第%d名", i)
+			one.Name = fmt.Sprintf("第%d名的%s", i, one.Name)
 			err = one.Update()
 		}
 	}
 	res, err = model.GetDemoAllList()
 	return res, err
+}
+
+func CronCall() {
+	res, err := model.GetDemoAllList()
+	if nil != err {
+		return
+	}
+
+	for _, one := range res {
+		_, err = data.RedisClient.Del(one.Name).Result()
+	}
 }

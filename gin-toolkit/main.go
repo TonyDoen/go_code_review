@@ -10,17 +10,20 @@ import (
 )
 
 func main() {
-	//gin
+	// gin
 	r := gin.New()
 
-	//启动配置
+	// 启动配置
 	common.Bootstrap(r)
 
 	data.InitMysql()
 	data.InitRedis()
 
-	//路由
+	// 路由
 	router.Api(r)
+
+	// 定时任务
+	router.Crontab()
 
 	_ = endless.ListenAndServe(":"+conf.Conf.Port, r)
 }
