@@ -19,7 +19,7 @@ func Query(c *gin.Context) {
 		return
 	}
 
-	empNameRes, cityIdRes, err := demo.Call("tony", 666, c)
+	empNameRes, cityIdRes, err := demo.Call(c, "tony", 666)
 	if err != nil {
 		common.RenderJsonFail(c, err)
 		return
@@ -32,4 +32,12 @@ func Query(c *gin.Context) {
 		"result":result,
 	})
 	return
+}
+
+func QueryAll(c *gin.Context) {
+	res, err := demo.GetAll(c)
+	if nil != err {
+		common.RenderJsonFail(c, err)
+	}
+	common.RenderJsonSuccess(c, gin.H{"list":res})
 }

@@ -8,4 +8,5 @@ import (
 func Api(r *gin.Engine) {
 	demoGroup := r.Group("/api/demo")
 	demoGroup.GET("/query", demo.Query)
+	demoGroup.GET("/queryAll", demo.QueryAll)
 }
