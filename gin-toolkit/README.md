@@ -1,4 +1,24 @@
 
+### 使用步骤
+1. 配置 go 运行环境（包括 执行环境安装 $GOROOT, $GOPATH 变量配置）
+
+2. 在 $GOPATH/src 目录下创建 github.com/TonyDoen/go_code_review/gin-toolkit 目录
+```
+mkdir -p $GOPATH/src/github.com/TonyDoen/go_code_review/gin-toolkit
+```
+3. 把 gin-toolkit 代码 移动到上面创建的目录
+```
+mv ./* $GOPATH/src/github.com/TonyDoen/go_code_review/gin-toolkit/
+```
+4. `sh ./gen.sh 项目名称`
+
+
+### Tips
+如需要修改 $GOPATH/src/github.com/TonyDoen/go_code_review/gin-toolkit/ 目录
+1. 创建你自己的目录 $GOPATH/src/ `your/file/path` /gin-toolkit
+2. `grep -rl 'github.com/TonyDoen/go_code_review' ./  | xargs sed -i "" "s/github.com\/TonyDoen\/go_code_review/your\/file\/path/g"`
+
+
 ### 启动&重启&隔离依赖
 1. docker-compose up -d，会在本地启动所有的依赖环境（mysql/redis/nsq）
 
