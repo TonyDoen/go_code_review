@@ -1,5 +1,5 @@
-### go_code_review
-learning golang
+### go_code_review 
+slogan: learning golang
 
 1. fund go语言基础知识
 
