@@ -11,14 +11,18 @@ mkdir -p $GOPATH/src/github.com/TonyDoen/go_code_review/gin-toolkit
 mv ./* $GOPATH/src/github.com/TonyDoen/go_code_review/gin-toolkit/
 ```
 4. 新建项目
-`sh ./gen.sh 项目名称`
+```
+sh ./gen.sh 项目名称
+```
 
 
 ### Tips
 如需要修改 $GOPATH/src/github.com/TonyDoen/go_code_review/gin-toolkit/ 目录
 1. 创建你自己的目录 $GOPATH/src/ `your/file/path` /gin-toolkit
 2. 替换模板项目里的 默认路径
-`grep -rl 'github.com/TonyDoen/go_code_review' ./  | xargs sed -i "" "s/github.com\/TonyDoen\/go_code_review/your\/file\/path/g"`
+```
+grep -rl 'github.com/TonyDoen/go_code_review' ./  | xargs sed -i "" "s/github.com\/TonyDoen\/go_code_review/your\/file\/path/g"
+```
 
 
 ### 二. 启动&重启&隔离依赖
@@ -39,10 +43,42 @@ docker-compose run -d -p 6379:6379 redis
 docker-compose run -d -p 6380:6379 redis
 ```
 
-### 常用命令
+### 三. 常用命令
 
-#### 更新服务端框架
+##### 更新服务端框架
 `govendor fetch -v ...`
 
-#### 启动依赖
+##### 启动依赖
 `docker-compose up -d`
+
+
+### 四. 目录说明
+
+##### 项目根目录
+如不修改默认目录，即 $GOPATH/src/github.com/TonyDoen/go_code_review/yourProjectName
+
+##### 项目目录下通常存分为如下目录：
+`common/`
+通用组件目录（待优化）
+
+`conf/`
+配置文件目录
+
+`controller/`
+控制器层目录
+
+`model/`
+数据模型层目录
+
+`router/`
+路由层目录
+
+`service/`
+业务逻辑层目录
+
+`sql/`
+数据库生成文件
+
+`vendor/`
+依赖管理目录
+
