@@ -1,8 +1,8 @@
 package demo
 
 import (
-	"../../common"
-	"../../service/demo"
+	"github.com/TonyDoen/go_code_review/gin-toolkit/common"
+	"github.com/TonyDoen/go_code_review/gin-toolkit/service/demo"
 	"github.com/gin-gonic/gin"
 )
 

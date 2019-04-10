@@ -1,7 +1,7 @@
 package router
 
 import (
-	"../controller/demo"
+	"github.com/TonyDoen/go_code_review/gin-toolkit/controller/demo"
 	"github.com/gin-gonic/gin"
 )
 

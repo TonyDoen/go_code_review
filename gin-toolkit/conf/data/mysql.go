@@ -1,9 +1,9 @@
 package data
 
 import (
-	"../../common"
-	"../../conf"
 	"fmt"
+	"github.com/TonyDoen/go_code_review/gin-toolkit/common"
+	"github.com/TonyDoen/go_code_review/gin-toolkit/conf"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/sirupsen/logrus"

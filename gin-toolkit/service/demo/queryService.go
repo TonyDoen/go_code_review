@@ -1,9 +1,9 @@
 package demo
 
 import (
-	"../../common"
-	"../../conf/data"
-	"../../model"
+	"github.com/TonyDoen/go_code_review/gin-toolkit/common"
+	"github.com/TonyDoen/go_code_review/gin-toolkit/conf/data"
+	"github.com/TonyDoen/go_code_review/gin-toolkit/model"
 	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"

@@ -1,7 +1,7 @@
 package router
 
 import (
-	"../service/demo"
+	"github.com/TonyDoen/go_code_review/gin-toolkit/service/demo"
 	"github.com/robfig/cron"
 )
 

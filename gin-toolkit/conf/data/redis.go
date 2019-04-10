@@ -1,8 +1,8 @@
 package data
 
 import (
-	"../../common"
-	"../../conf"
+	"github.com/TonyDoen/go_code_review/gin-toolkit/common"
+	"github.com/TonyDoen/go_code_review/gin-toolkit/conf"
 	"github.com/go-redis/redis"
 	"time"
 )

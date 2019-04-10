@@ -1,8 +1,8 @@
 package model
 
 import (
-	"../common"
-	"../conf/data"
+	"github.com/TonyDoen/go_code_review/gin-toolkit/common"
+	"github.com/TonyDoen/go_code_review/gin-toolkit/conf/data"
 	"time"
 )
 

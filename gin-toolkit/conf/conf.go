@@ -5,7 +5,7 @@ import (
 	"path"
 	"runtime"
 
-	"../common"
+	"github.com/TonyDoen/go_code_review/gin-toolkit/common"
 	"gopkg.in/yaml.v2"
 )
 
