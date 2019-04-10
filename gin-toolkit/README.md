@@ -17,7 +17,8 @@ mv ./* $GOPATH/src/github.com/TonyDoen/go_code_review/gin-toolkit/
 ### Tips
 如需要修改 $GOPATH/src/github.com/TonyDoen/go_code_review/gin-toolkit/ 目录
 1. 创建你自己的目录 $GOPATH/src/ `your/file/path` /gin-toolkit
-2. `grep -rl 'github.com/TonyDoen/go_code_review' ./  | xargs sed -i "" "s/github.com\/TonyDoen\/go_code_review/your\/file\/path/g"`
+2. 替换模板项目里的 默认路径
+`grep -rl 'github.com/TonyDoen/go_code_review' ./  | xargs sed -i "" "s/github.com\/TonyDoen\/go_code_review/your\/file\/path/g"`
 
 
 ### 二. 启动&重启&隔离依赖
