@@ -67,7 +67,7 @@ func (n *Node) preOrder() { // 前序遍历
 	if nil == n {
 		return
 	}
-	fmt.Printf("%d ", n.data)
+	fmt.Printf("%d ", n.data) // visit
 	n.left.preOrder()
 	n.right.preOrder()
 }
@@ -76,7 +76,7 @@ func (n *Node) inOrder() { // 中序遍历
 		return
 	}
 	n.left.preOrder()
-	fmt.Printf("%d ", n.data)
+	fmt.Printf("%d ", n.data) // visit
 	n.right.preOrder()
 }
 func (n *Node) postOrder() { // 后序遍历
@@ -85,7 +85,7 @@ func (n *Node) postOrder() { // 后序遍历
 	}
 	n.left.preOrder()
 	n.right.preOrder()
-	fmt.Printf("%d ", n.data)
+	fmt.Printf("%d ", n.data) // visit
 }
 
 func SplitBST1(root *Node, v int) *[2]*Node {
