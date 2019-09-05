@@ -39,7 +39,7 @@ func ShiftingLetters1(src string, shifts []int) string {
 	}
 	buff := new(bytes.Buffer)
 	for i := 0; i < length; i++ {
-		c := (src[i] - 'a' + uint8(shifts[i])) % 26 + 'a'
+		c := (src[i]-'a'+uint8(shifts[i]))%26 + 'a'
 		buff.WriteByte(c)
 	}
 	return buff.String()

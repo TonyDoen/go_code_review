@@ -10,9 +10,9 @@ func MaximizeDistance2ClosestPerson2(seats []int) int {
 			continue
 		}
 		if 0 == start {
-			res = math.Max(res, float64(i) - start)
+			res = math.Max(res, float64(i)-start)
 		} else {
-			res = math.Max(res, (float64(i) - start + 1)/2)
+			res = math.Max(res, (float64(i)-start+1)/2)
 		}
 		start = float64(i + 1)
 	}

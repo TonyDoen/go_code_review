@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestSplitBST1 (t *testing.T) {
+func TestSplitBST1(t *testing.T) {
 	/**
 	        4
 	      /   \

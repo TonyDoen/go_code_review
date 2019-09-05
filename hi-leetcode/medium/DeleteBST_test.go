@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestDeleteNode3 (t *testing.T) {
+func TestDeleteNode3(t *testing.T) {
 	/**
 	        7
 	      /   \

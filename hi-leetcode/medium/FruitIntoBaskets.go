@@ -57,7 +57,7 @@ func TotalFruit0(tree []int) int {
 			}
 			start++
 		}
-		res = int(math.Max(float64(res), float64(i - start + 1)))
+		res = int(math.Max(float64(res), float64(i-start+1)))
 	}
 	return res
 }
@@ -67,10 +67,14 @@ func TotalFruit0(tree []int) int {
  * 还有一种不使用 HashMap 的解法，这里我们使用若干个变量，其中 cur 为当前最长子数组的长度，a和b为当前候选的两个不同的水果种类，cntB 为水果b的连续个数。我们遍历所有数字，假如遇到的水果种类是a和b中的任意一个，那么 cur 可以自增1，否则 cntB 自增1，因为若是新水果种类的话，默认已经将a种类淘汰了，此时候选水果由类型b和这个新类型水果构成，所以当前长度是 cntB+1。然后再来更新 cntB，假如当前水果种类是b的话，cntB 自增1，否则重置为1，因为 cntB 统计的就是水果种类b的连续个数。然后再来判断，若当前种类不是b，则此时a赋值为b， b赋值为新种类。最后不要忘了用 cur 来更新结果 res，
  */
 func TotalFruit2(tree []int) int {
-	res := 0; cur := 0; cntB := 0; a := 0; b := 0
+	res := 0
+	cur := 0
+	cntB := 0
+	a := 0
+	b := 0
 	for _, fruit := range tree {
-		cur = When(fruit == a || fruit == b, cur + 1, cntB + 1).(int)
-		cntB = When(fruit == b, cntB + 1, 1).(int)
+		cur = When(fruit == a || fruit == b, cur+1, cntB+1).(int)
+		cntB = When(fruit == b, cntB+1, 1).(int)
 		if b != fruit {
 			a = b
 			b = fruit

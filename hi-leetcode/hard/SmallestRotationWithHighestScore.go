@@ -56,10 +56,10 @@ func BestRotation1(arr []int) int {
 	res := 0
 	change := make([]int, n)
 	for i := 0; i < n; i++ {
-		change[(i - arr[i] + 1 + n) % n] -= 1
+		change[(i-arr[i]+1+n)%n] -= 1
 	}
 	for i := 1; i < n; i++ {
-		change[i] += change[i - 1] + 1
+		change[i] += change[i-1] + 1
 		if change[i] > change[res] {
 			res = i
 		}
