@@ -48,6 +48,7 @@ type StockSpanner struct {
 	num []int // 切片, slice
 	pre []int
 }
+
 func (ss *StockSpanner) next(price int) int {
 	if nil == ss {
 		return -1
@@ -59,19 +60,22 @@ func (ss *StockSpanner) next(price int) int {
 		i = ss.pre[i]
 	}
 	ss.pre = append(ss.pre, i)
-	return len(ss.pre) - 1 -i
+	return len(ss.pre) - 1 - i
 }
 
 type Pair struct {
 	k interface{}
 	v interface{}
 }
+
 func NewPair(k, v interface{}) *Pair {
 	return &Pair{k, v}
 }
+
 type StockSpanner2 struct {
 	st list.List
 }
+
 func (ss *StockSpanner2) next(price int) int {
 	if nil == ss {
 		return -1
