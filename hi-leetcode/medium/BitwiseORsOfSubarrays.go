@@ -68,6 +68,17 @@ type Set struct {
 	m map[interface{}]struct{}
 }
 
+func (s *Set) AddSet(items ...*Set) error {
+	for _, item := range items {
+		if nil == item {
+			continue
+		}
+		for key := range item.m {
+			s.m[key] = struct{}{} // 空结构体变量的内存占用大小为0
+		}
+	}
+	return nil
+}
 func (s *Set) Add(items ...interface{}) error {
 	for _, item := range items {
 		s.m[item] = struct{}{} // 空结构体变量的内存占用大小为0
@@ -126,12 +137,11 @@ func SubarrayBitwiseORs(arr []int) int {
 	cur := NewSet()
 	for _, i := range arr {
 		tmp := NewSet(i)
-
 		for j := range cur.m {
 			_ = tmp.Add(i | j.(int))
 		}
 		cur = tmp
-		_ = res.Add(cur)
+		_ = res.AddSet(cur)
 	}
 	return res.Size()
 }
