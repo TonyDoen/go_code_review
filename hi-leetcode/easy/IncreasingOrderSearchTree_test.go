@@ -10,6 +10,12 @@ func TestIncreasingBST(t *testing.T) {
 	res.preOrder()
 }
 
+func TestIncreasingBST2(t *testing.T)  {
+	root := prepareTree()
+	res := IncreasingBST2(root)
+	res.preOrder()
+}
+
 func prepareTree() *Node {
 	/**
 	      5

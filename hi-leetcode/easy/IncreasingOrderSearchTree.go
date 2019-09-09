@@ -1,6 +1,9 @@
 package easy
 
-import "fmt"
+import (
+	"container/list"
+	"fmt"
+)
 
 type Node struct {
 	Data        int
@@ -30,4 +33,26 @@ func iBST(node, pre *Node) *Node {
 	node.Left = nil
 	node.Right = iBST(node.Right, pre)
 	return res
+}
+
+func IncreasingBST2(root *Node) *Node {
+	dummy := NewNode(-1, nil, nil)
+	pre := dummy
+	var st list.List
+	for st.Len() > 0 || nil != root {
+		for nil != root {
+			st.PushFront(root)
+			root = root.Left
+		}
+
+		el := st.Front()
+		root = el.Value.(*Node)
+		st.Remove(el)
+
+		pre.Right = root
+		pre = pre.Right
+		root.Left = nil
+		root = root.Right
+	}
+	return dummy.Right
 }
