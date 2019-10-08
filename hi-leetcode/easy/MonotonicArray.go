@@ -59,9 +59,8 @@ func IsMonotonic2(arr []int) bool {
 	dec := 1
 	length := len(arr)
 	for i := 1; i < length; i++ {
-		inc += medium.When(arr[i - 1] <= arr[i], 1, 0).(int)
-		dec += medium.When(arr[i - 1] >= arr[i], 1, 0).(int)
+		inc += medium.When(arr[i-1] <= arr[i], 1, 0).(int)
+		dec += medium.When(arr[i-1] >= arr[i], 1, 0).(int)
 	}
 	return (length == inc) || (length == dec)
 }
-

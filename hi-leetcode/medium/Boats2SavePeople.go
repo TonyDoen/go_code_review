@@ -38,8 +38,8 @@ func NumRescueBoats(people []int, limit int) int {
 	left := 0
 	right := n - 1
 	sort.Ints(people)
-	for ; left <= right; {
-		if people[left] + people[right] <= limit {
+	for left <= right {
+		if people[left]+people[right] <= limit {
 			left++
 		}
 		right--

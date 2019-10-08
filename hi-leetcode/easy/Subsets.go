@@ -69,7 +69,7 @@ func Subset2(arr []int) [][]int {
 func convert(arr []int, k int) []int {
 	var res []int
 	var idx int
-	for i := k; i > 0; i>>=1 {
+	for i := k; i > 0; i >>= 1 {
 		if (i & 1) == 1 {
 			res = append(res, arr[idx])
 		}

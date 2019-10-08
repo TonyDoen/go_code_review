@@ -16,4 +16,3 @@ func TestIsMonotonic2(t *testing.T) {
 	res := IsMonotonic2(arr)
 	fmt.Printf("%v \n", res) // visit
 }
-

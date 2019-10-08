@@ -46,6 +46,7 @@ import (
 type Set struct {
 	Map map[interface{}]struct{} // struct为结构体类型的变量
 }
+
 func (s *Set) Add(items ...interface{}) error {
 	for _, item := range items {
 		s.Map[item] = struct{}{} // 空结构体变量的内存占用大小为0
@@ -93,10 +94,10 @@ func AtMostNGivenDigitSet(d *Set, n int) int {
 	}
 	for i := 0; i < length; i++ {
 		hasSameNum := false
-		for key :=range d.Map {
+		for key := range d.Map {
 			s := key.(string)
 			if s[0] < nStr[i] {
-				res += int(math.Pow(float64(dSize), float64(length - 1 - i)))
+				res += int(math.Pow(float64(dSize), float64(length-1-i)))
 			} else if s[0] == nStr[i] {
 				hasSameNum = true
 			}

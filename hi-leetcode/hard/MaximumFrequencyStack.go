@@ -49,10 +49,11 @@ import (
  */
 type FreqStack struct {
 	maxFreq int
-	freq map[int]int
-	mp map[int]*list.List
+	freq    map[int]int
+	mp      map[int]*list.List
 }
-func (fs *FreqStack) push(x int)  {
+
+func (fs *FreqStack) push(x int) {
 	f := fs.freq[x] + 1
 	fs.freq[x] = f
 
