@@ -33,10 +33,10 @@ import "math"
 
 func MinEatingSpeed1(piles []int, h int) int {
 	var left, right = 1, int(math.Pow(10.0, 9.0))
-	for ; left < right; {
-		var mid, cnt = left + (right - left)/2, 0
+	for left < right {
+		var mid, cnt = left + (right-left)/2, 0
 		for _, pile := range piles {
-			cnt += (pile + mid - 1)/mid
+			cnt += (pile + mid - 1) / mid
 		}
 		if cnt > h {
 			left = mid + 1

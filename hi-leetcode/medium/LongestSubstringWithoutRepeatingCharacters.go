@@ -39,7 +39,7 @@ func LengthOfLongestSubstring1(s string) int {
 			left = idxCi
 		}
 		m[ci] = i
-		res = int(math.Max(float64(res), float64(i - left)))
+		res = int(math.Max(float64(res), float64(i-left)))
 	}
 	return res
 }
@@ -53,7 +53,7 @@ func LengthOfLongestSubstring2(s string) int {
 	for i, ci := range s {
 		left = int(math.Max(float64(left), float64(m[ci])))
 		m[ci] = i
-		res = int(math.Max(float64(res), float64(i - left)))
+		res = int(math.Max(float64(res), float64(i-left)))
 	}
 	return res
 }

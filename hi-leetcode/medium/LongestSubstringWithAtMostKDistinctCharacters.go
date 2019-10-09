@@ -16,16 +16,14 @@ func LengthOfLongestSubstringKDistinct2(s string, k int) int {
 	var res, left, m = 0, 0, make(map[rune]int)
 	for i, ci := range s {
 		m[ci] = i
-		for ; len(m) > k; {
+		for len(m) > k {
 			cl := rune(s[left])
 			if m[cl] == left {
 				delete(m, cl)
 			}
 			left++
 		}
-		res = int(math.Max(float64(res), float64(i - left + 1)))
+		res = int(math.Max(float64(res), float64(i-left+1)))
 	}
 	return res
 }
-
-

@@ -11,4 +11,3 @@ func TestLengthOfLongestSubstringKDistinct2(t *testing.T) {
 	res := LengthOfLongestSubstringKDistinct2(s, k)
 	fmt.Printf("%d\n", res)
 }
-

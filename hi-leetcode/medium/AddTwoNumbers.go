@@ -4,6 +4,7 @@ type lNode struct {
 	data int
 	next *lNode
 }
+
 func AddTwoNumbers1(l1, l2 *lNode) *lNode {
 	var res, carry = &lNode{data: -1}, 0
 	cur := res
@@ -26,7 +27,7 @@ func AddTwoNumbers1(l1, l2 *lNode) *lNode {
 		} else {
 			carry = 0
 		}
-		cur.next = &lNode{data: sum%10}
+		cur.next = &lNode{data: sum % 10}
 		cur = cur.next
 		if nil != l1 {
 			l1 = l1.next
