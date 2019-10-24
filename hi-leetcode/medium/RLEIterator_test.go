@@ -7,11 +7,11 @@ import (
 
 func TestNewRLEIteratorOneNext(t *testing.T) {
 	arr := []int{3, 8, 0, 9, 2, 5}
-	ro := NewRLEIteratorOne(arr)
+	rr := NewRLEIterator1(arr)
 
 	input := []int{2, 1, 1, 2}
 	for _, v := range input {
-		t := ro.next(v)
+		t := rr.next(v)
 		fmt.Printf("%d\n", t)
 	}
 }

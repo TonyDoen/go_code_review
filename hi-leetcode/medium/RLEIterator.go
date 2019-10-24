@@ -2,41 +2,39 @@ package medium
 
 import "container/list"
 
-type RLEIteratorOne struct {
-	seq list.List
+type RLEIterator1 struct {
+	seq *list.List
 }
 
-func NewRLEIteratorOne(arr []int) *RLEIteratorOne {
-	length := len(arr)
-	var seq list.List
+func NewRLEIterator1(arr []int) *RLEIterator1 {
+	length, seq := len(arr), list.New()
 	for i := 0; i < length; i += 2 {
 		if 0 != arr[i] {
-			seq.PushBack(NewPair(arr[i+1], arr[i]))
+			seq.PushBack(NewPair(arr[i+1], arr[i])) // 前一个数字表示后面的一个数字重复出现的次数
 		}
 	}
-	return &RLEIteratorOne{seq: seq}
+	return &RLEIterator1{seq: seq}
 }
 
-func (ro *RLEIteratorOne) next(n int) int { // error
-	if nil == ro {
+func (rr *RLEIterator1) next(n int) int {
+	if nil == rr || nil == rr.seq {
 		return -1
 	}
-	//tmp := ro.seq.Front()
-	//for {
-	//	p := tmp.Value.(*Pair)
-	//	//if 0 == p.v {
-	//	//	continue
-	//	//}
-	//	if n <= p.v.(int) {
-	//		p.v = p.v.(int) - n
-	//		return p.k.(int)
-	//	}
-	//	n -= p.v.(int)
-	//
-	//	tmp := tmp.Next()
-	//	if nil == tmp || nil == tmp.Value {
-	//		break
-	//	}
-	//}
+	tmp := rr.seq.Front()
+	for nil != tmp {
+		p := tmp.Value.(*Pair)
+		k, v := p.k.(int), p.v.(int)
+
+		tmp = tmp.Next()
+		if 0 == v {
+			continue
+		}
+		if v >= n {
+			p.v = v - n
+			return k
+		}
+		n -= v
+		p.v = 0
+	}
 	return -1
 }
