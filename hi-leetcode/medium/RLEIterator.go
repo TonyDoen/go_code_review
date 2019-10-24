@@ -97,5 +97,5 @@ func (rr *RLEIterator2) next(n int) int {
 		return -1
 	}
 	arr[cur] -= n
-	return arr[cur + 1]
+	return arr[cur+1]
 }
