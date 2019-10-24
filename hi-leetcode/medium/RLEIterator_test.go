@@ -14,4 +14,10 @@ func TestNewRLEIteratorOneNext(t *testing.T) {
 		t := rr.next(v)
 		fmt.Printf("%d\n", t)
 	}
+
+	rr2 := NewRLEIterator2(arr)
+	for _, v := range input {
+		t := rr2.next(v)
+		fmt.Printf("%d\n", t)
+	}
 }
