@@ -11,18 +11,3 @@ func TestMaxSubarraySumCircular(t *testing.T) {
 	res := maxSubarraySumCircular(arr)
 	fmt.Printf("%d\n", res)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

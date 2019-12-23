@@ -29,7 +29,7 @@ import "sort"
  * 可以发现两个等式的值都是相等的，只不过顺序颠倒了一下，参见代码如下：
  */
 func SumSubseqWidths1(arr []int) int {
-	var res, n, m, c = 0, len(arr), (int)(1e9+7), 1
+	var res, n, m, c = 0, len(arr), (int)(1e9 + 7), 1
 	sort.Ints(arr)
 	for i := 0; i < n; i++ {
 		res = (res + arr[i]*c - arr[n-i-1]*c) % m
@@ -55,15 +55,15 @@ func SumSubseqWidths1(arr []int) int {
  * 我们发现，最终还是转化成了跟解法一中一样的规律，参见代码如下：
  */
 func SumSubseqWidths2(arr []int) int {
-	var res, n, m, c = 0, len(arr), (int)(1e9+7), 1
+	var res, n, m, c = 0, len(arr), (int)(1e9 + 7), 1
 	var leftSum, rightSum, left, right = 0, 0, 0, n - 1
 	sort.Ints(arr)
-	for ;left < n; {
+	for left < n {
 		leftSum += arr[left]
 		left++
 		rightSum += arr[right]
 		right--
-		res = (res + (rightSum - leftSum) * c) % m
+		res = (res + (rightSum-leftSum)*c) % m
 		c = (c << 1) % m
 	}
 	return res

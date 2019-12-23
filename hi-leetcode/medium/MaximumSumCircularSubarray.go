@@ -41,32 +41,29 @@ import "math"
 func maxSubarraySumCircular(arr []int) int {
 	var sum, mn, mx, curMax, curMin = 0, math.MaxInt32, math.MinInt32, 0, 0
 	for _, v := range arr {
-		curMin = int(math.Min(float64(curMin + v), float64(v)))
-		mn = int(math.Min(float64(mn), float64(curMin)))
-		curMax = int(math.Max(float64(curMax + v), float64(v)))
-		mx = int(math.Max(float64(mx), float64(curMax)))
+		curMin = min(curMin+v, v)
+		mn = min(mn, curMin)
+		curMax = max(curMax+v, v)
+		mx = max(mx, curMax)
 		sum += v
 	}
-	if sum - mn == 0 {
+	if sum-mn == 0 {
 		return mx
 	} else {
-		return int(math.Max(float64(mx), float64(sum - mn)))
+		return max(mx, sum-mn)
 	}
 }
 
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}

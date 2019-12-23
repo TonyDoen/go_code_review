@@ -1,7 +1,5 @@
 package hard
 
-import "math"
-
 func SuperEggDrop1(k, n int) int {
 	dp := make([][]int, k+1)
 	for j := 0; j <= n; j++ {
@@ -21,8 +19,22 @@ func SuperEggDrop1(k, n int) int {
 					right = mid
 				}
 			}
-			dp[i][j] = int(math.Min(float64(dp[i][j]), math.Max(float64(dp[i-1][right-1]), float64(dp[i][j-right]))+1.0))
+			dp[i][j] = min(dp[i][j], max(dp[i-1][right-1], dp[i][j-right])+1)
 		}
 	}
 	return dp[k][n]
+}
+
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
 }

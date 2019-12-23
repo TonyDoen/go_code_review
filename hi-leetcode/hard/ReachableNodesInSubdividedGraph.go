@@ -2,7 +2,6 @@ package hard
 
 import (
 	"container/list"
-	"math"
 )
 
 /**
@@ -89,8 +88,8 @@ func ReachableNodes(edges [][]int, m, n int) int {
 			if move > graph[cur][i] && !visited[i] {
 				pq.PushBack(NewPair(move-graph[cur][i]-1, i))
 			}
-			graph[i][cur] -= int(math.Min(float64(move), float64(graph[cur][i])))
-			res += int(math.Min(float64(move), float64(graph[cur][i])))
+			graph[i][cur] -= min(move, graph[cur][i])
+			res += min(move, graph[cur][i])
 		}
 	}
 	return res
