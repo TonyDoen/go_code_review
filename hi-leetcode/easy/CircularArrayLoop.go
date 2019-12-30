@@ -52,9 +52,9 @@ func CircularArrayLoop1(arr []int) bool {
 		m := make(map[int]int)
 		cur := i
 
-		for ; true; {
-			next := ((cur + arr[cur]) % n + n) % n
-			if next == cur || arr[next] * arr[cur] < 0 {
+		for true {
+			next := ((cur+arr[cur])%n + n) % n
+			if next == cur || arr[next]*arr[cur] < 0 {
 				break
 			}
 			if 0 != m[next] {
@@ -95,7 +95,7 @@ func CircularArrayLoop2(arr []int) bool {
 			continue
 		}
 		var slow, fast, val = i, nextIndex(arr, i), arr[i]
-		for ; val*arr[fast] > 0 && val*arr[nextIndex(arr, fast)] > 0; {
+		for val*arr[fast] > 0 && val*arr[nextIndex(arr, fast)] > 0 {
 			if slow == fast {
 				if slow == nextIndex(arr, slow) {
 					break
@@ -106,7 +106,7 @@ func CircularArrayLoop2(arr []int) bool {
 			fast = nextIndex(arr, nextIndex(arr, fast))
 		}
 		slow = i
-		for ; val*arr[slow] > 0; {
+		for val*arr[slow] > 0 {
 			next := nextIndex(arr, slow)
 			arr[slow] = 0
 			slow = next

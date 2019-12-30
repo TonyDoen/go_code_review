@@ -23,7 +23,7 @@ func MaxSubArray1(arr []int) int {
 	var res, curSum = math.MinInt32, 0
 
 	for _, num := range arr {
-		curSum = max(curSum + num, num)
+		curSum = max(curSum+num, num)
 		res = max(res, curSum)
 	}
 	return res
@@ -37,30 +37,29 @@ func MaxSubArray2(arr []int) int {
 	if 0 == length {
 		return 0
 	}
-	return helpMaxSubArray2(arr, 0, length - 1)
+	return helpMaxSubArray2(arr, 0, length-1)
 }
 func helpMaxSubArray2(arr []int, left, right int) int {
 	if left >= right {
 		return arr[left]
 	}
-	mid := left + (right - left) / 2
-	lMax := helpMaxSubArray2(arr, left, mid - 1)
-	rMax := helpMaxSubArray2(arr, mid + 1, right)
+	mid := left + (right-left)/2
+	lMax := helpMaxSubArray2(arr, left, mid-1)
+	rMax := helpMaxSubArray2(arr, mid+1, right)
 
 	mMax := arr[mid]
 	t := mMax
-	for i := mid-1; i >= left; i-- {
+	for i := mid - 1; i >= left; i-- {
 		t += arr[i]
 		mMax = max(mMax, t)
 	}
 	t = mMax
-	for i := mid+1; i <= right; i++ {
+	for i := mid + 1; i <= right; i++ {
 		t += arr[i]
 		mMax = max(mMax, t)
 	}
 	return max(mMax, max(lMax, rMax))
 }
-
 
 func min(a, b int) int {
 	if a < b {

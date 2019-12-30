@@ -11,7 +11,7 @@ func TestCircularArrayLoop1(t *testing.T) {
 	fmt.Printf("%v \n", res) // visit
 }
 
-func TestCircularArrayLoop2(t *testing.T)  {
+func TestCircularArrayLoop2(t *testing.T) {
 	arr := []int{2, -1, 1, 2, 2}
 	res := CircularArrayLoop2(arr)
 	fmt.Printf("%v \n", res) // visit
