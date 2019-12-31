@@ -28,7 +28,7 @@ package easy
 func ReverseOnlyLetters1(src string) string {
 	length := len(src)
 	res := make([]byte, length)
-	for i, j := length - 1, 0; i >= 0; i-- {
+	for i, j := length-1, 0; i >= 0; i-- {
 		c := src[i]
 		if isLetter(c) {
 			res[j] = c
@@ -47,22 +47,25 @@ func ReverseOnlyLetters1(src string) string {
 	return string(res)
 }
 
+/**
+ * 思路：再来看一种更加简洁的解法，使用两个指针i和j，分别指向S串的开头和结尾。当i指向非字母字符时，指针i自增1，否则若j指向非字母字符时，指针j自减1，若i和j都指向字母时，则交换 S[i] 和 S[j] 的位置，同时i自增1，j自减1，这样也可以实现只翻转字母的目的
+ */
 func ReverseOnlyLetters2(src string) string {
 	length := len(src)
 	i, j, res := 0, length-1, make([]byte, length)
-	for ; i < j; {
+	for i < j {
 		ic, jc := src[i], src[j]
 		if !isLetter(ic) {
 			res[i] = ic
 			i++
 		} else if !isLetter(jc) {
 			res[j] = jc
-		    j--
+			j--
 		} else {
-		    res[i] = jc
-		    res[j] = ic
-		    i++
-		    j--
+			res[i] = jc
+			res[j] = ic
+			i++
+			j--
 		}
 	}
 	return string(res)

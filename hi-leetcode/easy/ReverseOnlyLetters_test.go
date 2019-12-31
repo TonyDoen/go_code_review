@@ -18,4 +18,3 @@ func TestReverseOnlyLetters2(t *testing.T) {
 	res := ReverseOnlyLetters2(src)
 	fmt.Printf("%s \n", res) // visit
 }
-
