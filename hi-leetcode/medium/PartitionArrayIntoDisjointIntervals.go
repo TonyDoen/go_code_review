@@ -38,13 +38,13 @@ func PartitionDisjoint1(arr []int) int {
 	length, curMax := len(arr), math.MinInt32
 	backMin := make([]int, length)
 	backMin[length-1] = arr[length-1]
-	for i := length-2; i >= 0; i-- {
+	for i := length - 2; i >= 0; i-- {
 		backMin[i] = min(backMin[i+1], arr[i])
 	}
 	for i := 0; i < length-1; i++ {
 		curMax = max(curMax, arr[i])
 		if curMax <= backMin[i+1] {
-			return i+1
+			return i + 1
 		}
 	}
 	return 0
