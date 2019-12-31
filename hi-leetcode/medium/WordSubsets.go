@@ -80,4 +80,3 @@ func count(c string) []int {
 	}
 	return res
 }
-
