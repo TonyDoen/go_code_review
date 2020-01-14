@@ -47,11 +47,11 @@ func d3(n int) [][][]int {
 	for z := 0; z < n; z++ {
 		a1[z] = -1
 	}
-	a2 := make([][]int, 0)
+	a2 := make([][]int, 0, n)
 	for z := 0; z < n; z++ {
 		a2 = append(a2, a1)
 	}
-	a3 := make([][][]int, 0)
+	a3 := make([][][]int, 0, 2*n)
 	for z := 0; z < 2*n; z++ {
 		a3 = append(a3, a2)
 	}
