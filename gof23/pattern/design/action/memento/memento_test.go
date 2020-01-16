@@ -15,7 +15,7 @@ func TestDemoStudent(t *testing.T) {
 	c.SetMemento(o.CreateMemento())
 
 	// 当前状态
-	fmt.Println("当前状态:",o.GetState())
+	fmt.Println("当前状态:", o.GetState())
 
 	// 改变状态
 	o.SetState("world")

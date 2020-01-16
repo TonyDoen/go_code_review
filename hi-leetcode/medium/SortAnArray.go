@@ -50,7 +50,7 @@ func quickSort(arr []int, start, end int) {
 	if start >= end {
 		return
 	}
-	pivot, i, j := arr[start], start + 1, end
+	pivot, i, j := arr[start], start+1, end
 	for i <= j {
 		if arr[i] > pivot && arr[j] < pivot {
 			tmp := arr[i]
@@ -71,6 +71,6 @@ func quickSort(arr []int, start, end int) {
 	arr[start] = arr[j]
 	arr[j] = tmp
 
-	quickSort(arr, start, j - 1)
-	quickSort(arr, j + 1, end)
+	quickSort(arr, start, j-1)
+	quickSort(arr, j+1, end)
 }

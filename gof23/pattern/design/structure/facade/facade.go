@@ -51,7 +51,7 @@ package facade
 type Facade struct {
 }
 
-func (f *Facade)test()  {
+func (f *Facade) test() {
 	a := &ModuleA{}
 	a.TestA()
 
@@ -66,26 +66,24 @@ func (f *Facade)test()  {
 type ModuleA struct {
 }
 
-func (m *ModuleA)TestA()  {
+func (m *ModuleA) TestA() {
 	println("ModuleA TestA")
 }
 
-func (m *ModuleA)testA123()  {
+func (m *ModuleA) testA123() {
 	println("ModuleA testA123")
 }
 
 type ModuleB struct {
 }
 
-func (m *ModuleB)TestB()  {
+func (m *ModuleB) TestB() {
 	println("ModuleB TestB")
 }
 
 type ModuleC struct {
 }
 
-func (m *ModuleC)TestC()  {
+func (m *ModuleC) TestC() {
 	println("ModuleC TestC")
 }
-
-

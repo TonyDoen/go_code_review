@@ -83,7 +83,7 @@ type ConcreteFlyWeight struct {
 	name string
 }
 
-func (c *ConcreteFlyWeight)Action(externalState string)  {
+func (c *ConcreteFlyWeight) Action(externalState string) {
 	println("name = " + c.name + ", outerState = " + externalState + ", Action ")
 }
 
@@ -92,7 +92,7 @@ type FlyWeightFactory struct {
 	m map[string]FlyWeight
 }
 
-func (f *FlyWeightFactory)GetFlyWeight(name string) FlyWeight {
+func (f *FlyWeightFactory) GetFlyWeight(name string) FlyWeight {
 	res := f.m[name]
 	if nil == res {
 		tmp := &ConcreteFlyWeight{name: name}
@@ -103,8 +103,5 @@ func (f *FlyWeightFactory)GetFlyWeight(name string) FlyWeight {
 }
 
 func NewFlyWeightFactory() *FlyWeightFactory {
-	return &FlyWeightFactory{m:make(map[string]FlyWeight)}
+	return &FlyWeightFactory{m: make(map[string]FlyWeight)}
 }
-
-
-

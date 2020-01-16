@@ -6,4 +6,3 @@ func TestDemoFacade(t *testing.T) {
 	facade := &Facade{}
 	facade.test()
 }
-

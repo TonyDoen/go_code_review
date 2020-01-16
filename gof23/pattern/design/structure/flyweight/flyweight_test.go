@@ -8,5 +8,3 @@ func TestDemoFlyWeight(t *testing.T) {
 	f1 := factory.GetFlyWeight("f1")
 	f1.Action("out2333")
 }
-
-

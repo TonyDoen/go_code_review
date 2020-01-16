@@ -47,15 +47,15 @@ type Context struct {
 	s State
 }
 
-func (c *Context)SetState(s State)  {
+func (c *Context) SetState(s State) {
 	c.s = s
 }
 
-func (c *Context)Push()  {
+func (c *Context) Push() {
 	c.s.HandlePush(c)
 }
 
-func (c *Context)Pull()  {
+func (c *Context) Pull() {
 	c.s.HandlePull(c)
 }
 
@@ -74,17 +74,17 @@ type State interface {
 type BlackState struct {
 }
 
-func (s *BlackState)HandlePush(c *Context) {
+func (s *BlackState) HandlePush(c *Context) {
 	println("Black. HandlePush ")
 	c.SetState(&RedState{})
 }
 
-func (s *BlackState)HandlePull(c *Context) {
+func (s *BlackState) HandlePull(c *Context) {
 	println("Black. HandlePull ")
 	c.SetState(&BlueState{})
 }
 
-func (s *BlackState)GetColor() string {
+func (s *BlackState) GetColor() string {
 	return "Black"
 }
 
@@ -94,17 +94,17 @@ func (s *BlackState)GetColor() string {
 type RedState struct {
 }
 
-func (s *RedState)HandlePush(c *Context) {
+func (s *RedState) HandlePush(c *Context) {
 	println("Red. HandlePush ")
 	c.SetState(&BlueState{})
 }
 
-func (s *RedState)HandlePull(c *Context) {
+func (s *RedState) HandlePull(c *Context) {
 	println("Red. HandlePull ")
 	c.SetState(&BlackState{})
 }
 
-func (s *RedState)GetColor() string {
+func (s *RedState) GetColor() string {
 	return "Red"
 }
 
@@ -114,16 +114,16 @@ func (s *RedState)GetColor() string {
 type BlueState struct {
 }
 
-func (s *BlueState)HandlePush(c *Context) {
+func (s *BlueState) HandlePush(c *Context) {
 	println("Blue. HandlePush ")
 	c.SetState(&BlackState{})
 }
 
-func (s *BlueState)HandlePull(c *Context) {
+func (s *BlueState) HandlePull(c *Context) {
 	println("Blue. HandlePull ")
 	c.SetState(&RedState{})
 }
 
-func (s *BlueState)GetColor() string {
+func (s *BlueState) GetColor() string {
 	return "Blue"
 }

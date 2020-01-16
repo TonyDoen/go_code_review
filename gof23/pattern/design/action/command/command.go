@@ -60,7 +60,7 @@ type ConcreteCommand struct {
 	r *Receiver
 }
 
-func (c *ConcreteCommand)Exec()  {
+func (c *ConcreteCommand) Exec() {
 	c.r.action()
 }
 
@@ -68,7 +68,7 @@ func (c *ConcreteCommand)Exec()  {
 type Receiver struct {
 }
 
-func (r *Receiver)action()  {
+func (r *Receiver) action() {
 	println("Receiver: command received!")
 }
 
@@ -77,6 +77,6 @@ type Invoker struct {
 	c Command
 }
 
-func (i *Invoker)action()  {
+func (i *Invoker) action() {
 	i.c.Exec()
 }

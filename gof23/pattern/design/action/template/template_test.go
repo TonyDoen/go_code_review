@@ -9,6 +9,3 @@ func TestDemoStudent(t *testing.T) {
 	t1 := NewTeacher("里斯", 0, "1988010101010101")
 	t1.PrepareGotoSchool()
 }
-
-
-

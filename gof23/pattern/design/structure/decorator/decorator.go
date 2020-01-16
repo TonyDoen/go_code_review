@@ -54,7 +54,7 @@ type ConcreteSubject struct {
 	name string
 }
 
-func (cs *ConcreteSubject)Action()  {
+func (cs *ConcreteSubject) Action() {
 	println("ConcreteSubject Name:" + cs.name + " action()")
 }
 
@@ -67,16 +67,15 @@ type SubjectPostDecorator struct {
 	sub ISubject
 }
 
-func (s *SubjectPostDecorator)Action()  {
+func (s *SubjectPostDecorator) Action() {
 	s.sub.Action()
 	s.postAction()
 }
 
-func (s *SubjectPostDecorator)postAction()  {
+func (s *SubjectPostDecorator) postAction() {
 	println("SubjectPostDecorator postAction()")
 }
 
 func NewSubjectPostDecorator(sub ISubject) *SubjectPostDecorator {
 	return &SubjectPostDecorator{sub: sub} // 此处就是 装饰模式 与 代理模式的区别
 }
-

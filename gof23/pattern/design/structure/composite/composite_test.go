@@ -20,11 +20,9 @@ func TestDemoComposite(t *testing.T) {
 
 	cop1.Inform("on vacation...")
 
-
 	cop1.Remove(dep3)
 	cop1.Inform("dep3 removed")
 
 	check := cop1.Equals(NewCompany("company1"))
 	println(check)
 }
-

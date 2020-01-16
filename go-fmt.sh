@@ -5,8 +5,11 @@ function cd_go_fmt() { # go fmt .
         if [ -d $cf ]; then
             echo $cf
             cd $cf
-            if [ -d ".go" ]; then
+            file=$(ls)
+            # echo $file
+            if [ "${file##*.}"x = "go"x ]; then
                 go fmt .
+                # echo $cf
                 echo ''
             else
                 cd_go_fmt

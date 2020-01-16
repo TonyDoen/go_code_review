@@ -31,7 +31,7 @@ package mediator
  *
  * 中介者模式的总结
  * 1. 在面向对象编程中，一个类必然会与其他的类发生依赖关系，完全独立的类是没有意义的。一个类同时依赖多个类的情况也相当普遍，既然存在这样的情况，说明，一对多的依赖关系有它的合理性，适当的使用中介者模式可以使原本凌乱的对象关系清晰，但是如果滥用，则可能会带来反的效果。一般来说，只有对于那种同事类之间是网状结构的关系，才会考虑使用中介者模式。可以将网状结构变为星状结构，使同事类之间的关系变的清晰一些。
- * 2. 中介者模式是一种比较常用的模式，也是一种比较容易被滥用的模式。对于大多数的情况，同事类之间的关系不会复杂到混乱不堪的网状结构，因此，大多数情况下，将对象间的依赖关系封装的同事类内部就可以的，没有必要非引入中介者模式。滥用中介者模式，只会让事情变的更复杂。 
+ * 2. 中介者模式是一种比较常用的模式，也是一种比较容易被滥用的模式。对于大多数的情况，同事类之间的关系不会复杂到混乱不堪的网状结构，因此，大多数情况下，将对象间的依赖关系封装的同事类内部就可以的，没有必要非引入中介者模式。滥用中介者模式，只会让事情变的更复杂。
  *
  *
  *
@@ -51,12 +51,12 @@ type MyMediator struct {
 	c2 CoWorker2
 }
 
-func (m MyMediator)CreateMediator() {
+func (m MyMediator) CreateMediator() {
 	m.c1 = CoWorker1{m: m}
 	m.c2 = CoWorker2{m: m}
 }
 
-func (m MyMediator)WorkAll()  {
+func (m MyMediator) WorkAll() {
 	m.c1.Work()
 	m.c2.Work()
 }
@@ -66,7 +66,7 @@ type CoWorker1 struct {
 	m Mediator
 }
 
-func (c CoWorker1)Work() {
+func (c CoWorker1) Work() {
 	//print(c)
 	println(" CoWorker1 working now. ")
 }
@@ -75,9 +75,7 @@ type CoWorker2 struct {
 	m Mediator
 }
 
-func (c CoWorker2)Work() {
+func (c CoWorker2) Work() {
 	//print(c)
 	println(" CoWorker2 working now. ")
 }
-
-

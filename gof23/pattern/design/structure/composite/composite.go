@@ -107,7 +107,6 @@ func (org *CommonOrganization) Inform(info string) {
 	}
 }
 
-
 // 2. 简单组件
 type Department struct {
 	CommonOrganization
@@ -122,7 +121,7 @@ type Company struct {
 	CommonOrganization
 }
 
-func (cop *Company)Equals(o interface{}) bool { // 重写Equals
+func (cop *Company) Equals(o interface{}) bool { // 重写Equals
 	if cop == o {
 		return true
 	}

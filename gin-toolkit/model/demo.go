@@ -27,8 +27,8 @@ func (p *Demo) Insert() (err error) {
 
 func (p *Demo) Update() (err error) {
 	err = data.MysqlClient.Model(&Demo{}).Where("id = ?", p.ID).Updates(map[string]interface{}{
-		"name": p.Name,
-		"desc": p.Desc,
+		"name":        p.Name,
+		"desc":        p.Desc,
 		"create_time": time.Now(),
 	}).Error
 	if nil != err {

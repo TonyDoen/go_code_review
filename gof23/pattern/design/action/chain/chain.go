@@ -49,7 +49,7 @@ type ConcreteHandler struct {
 	successor Handler
 }
 
-func (c *ConcreteHandler)HandleRequest()  {
+func (c *ConcreteHandler) HandleRequest() {
 	/**
 	 * 判断是否有后继的责任对象
 	 * 如果有，就转发请求给后继的责任对象
@@ -63,11 +63,11 @@ func (c *ConcreteHandler)HandleRequest()  {
 	}
 }
 
-func (c *ConcreteHandler)GetSuccessor() Handler {
+func (c *ConcreteHandler) GetSuccessor() Handler {
 	return c.successor
 }
 
-func (c *ConcreteHandler)SetSuccessor(h Handler) {
+func (c *ConcreteHandler) SetSuccessor(h Handler) {
 	c.successor = h
 }
 

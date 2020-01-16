@@ -36,13 +36,13 @@ func NewContext(n1, n2 float64) *Context {
 type Minus struct {
 }
 
-func (m *Minus)interpret(c *Context) float64 {
+func (m *Minus) interpret(c *Context) float64 {
 	return c._1 - c._2
 }
 
 type Plus struct {
 }
 
-func (p *Plus)interpret(c *Context) float64 {
+func (p *Plus) interpret(c *Context) float64 {
 	return c._1 + c._2
 }

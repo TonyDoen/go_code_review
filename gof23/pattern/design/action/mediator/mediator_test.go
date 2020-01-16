@@ -9,4 +9,3 @@ func TestDemoMediator(t *testing.T) {
 	mediator.CreateMediator()
 	mediator.WorkAll()
 }
-

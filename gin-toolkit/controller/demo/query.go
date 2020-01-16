@@ -6,7 +6,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-
 type paramQueryList struct {
 	EmpName string `form:"EmpName" binding:"required,max=32,min=1" `
 	CityId  string `form:"CityId" binding:"required,max=32,min=1" `
@@ -29,7 +28,7 @@ func Query(c *gin.Context) {
 	result["empNameRes"] = empNameRes
 	result["cityIdRes"] = cityIdRes
 	common.RenderJsonSuccess(c, gin.H{
-		"result":result,
+		"result": result,
 	})
 	return
 }
@@ -39,5 +38,5 @@ func QueryAll(c *gin.Context) {
 	if nil != err {
 		common.RenderJsonFail(c, err)
 	}
-	common.RenderJsonSuccess(c, gin.H{"list":res})
+	common.RenderJsonSuccess(c, gin.H{"list": res})
 }

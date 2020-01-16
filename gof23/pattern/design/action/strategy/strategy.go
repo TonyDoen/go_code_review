@@ -65,7 +65,7 @@ func (m MergeSortStrategy) Sort() {
 
 // 3. 定义上下文
 type Context struct {
-	strategy ISortStrategy  // 上下文中指定的策略
+	strategy ISortStrategy // 上下文中指定的策略
 }
 
 func (c Context) Sort() {
