@@ -8,7 +8,7 @@ slogan: learning design pattern
 3. [structure] 结构型模式，共7种： 适配器模式、装饰者模式、代理模式、外观模式、桥接模式、组合模式、享元模式。
 
 
-- 行为型模式(11种)
+*行为型模式(11种)
   1. [责任链模式](https://github.com/TonyDoen/go_code_review/tree/master/gof23/pattern/design/action/chain)
   2. [命令模式](https://github.com/TonyDoen/go_code_review/tree/master/gof23/pattern/design/action/command)
   3. [解释器模式](https://github.com/TonyDoen/go_code_review/tree/master/gof23/pattern/design/action/interpreter)
@@ -21,7 +21,7 @@ slogan: learning design pattern
   10. [模板模式](https://github.com/TonyDoen/go_code_review/tree/master/gof23/pattern/design/action/template)
   11. [访问者模式](https://github.com/TonyDoen/go_code_review/tree/master/gof23/pattern/design/action/visitor)
 
-- 创建型模式(5种)
+*创建型模式(5种)
   1. [抽象工厂模式](https://github.com/TonyDoen/go_code_review/tree/master/gof23/pattern/design/creation/abstractFactory)
   2. [建造者模式](https://github.com/TonyDoen/go_code_review/tree/master/gof23/pattern/design/creation/builder)
   3. [简单工厂模式](https://github.com/TonyDoen/go_code_review/tree/master/gof23/pattern/design/creation/factory)
@@ -29,7 +29,7 @@ slogan: learning design pattern
   4. [原型模式](https://github.com/TonyDoen/go_code_review/tree/master/gof23/pattern/design/creation/prototype)
   5. [单例模式](https://github.com/TonyDoen/go_code_review/tree/master/gof23/pattern/design/creation/singleton)
 
-- 结构型模式(7种)
+*结构型模式(7种)
   1. [适配器模式](https://github.com/TonyDoen/go_code_review/tree/master/gof23/pattern/design/structure/adapter)
   2. [桥接模式](https://github.com/TonyDoen/go_code_review/tree/master/gof23/pattern/design/structure/bridge)
   3. [组合模式](https://github.com/TonyDoen/go_code_review/tree/master/gof23/pattern/design/structure/composite)
