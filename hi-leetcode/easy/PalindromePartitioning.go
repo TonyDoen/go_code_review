@@ -89,10 +89,8 @@ func isPalindrome(s string) bool {
  * dp[i] - 表示子串（0，i）的最小回文切割，则最优解在dp[s.length-1]中。
  *
  * 分几种情况：
- * 1.初始化：当字串s.substring(0,i+1)(包括i位置的字符)是回文时，dp[i] = 0(表示不需要分割)；
- *   否则，dp[i] = i（表示至多分割i次）;
- * 2.对于任意大于1的i，如果s.substring(j,i+1)(j<=i,即遍历i之前的每个子串)是回文时，
- *   dp[i] = min(dp[i], dp[j-1]+1);
+ * 1.初始化：当字串s.substring(0,i+1)(包括i位置的字符)是回文时，dp[i] = 0(表示不需要分割)；否则，dp[i] = i（表示至多分割i次）;
+ * 2.对于任意大于1的i，如果s.substring(j,i+1)(j<=i,即遍历i之前的每个子串)是回文时，dp[i] = min(dp[i], dp[j-1]+1);
  * 3.如果s.substring(j,i+1)(j<=i)不是回文时，dp[i] = min(dp[i],dp[j-1]+i+1-j);
  *
  */
@@ -122,4 +120,56 @@ func MinCut(src string) int {
 		}
 	}
 	return dp[length-1]
+}
+
+/**
+ * 动态规划的题，最主要就是写出状态转移方程
+ * 状态转移，其实就是怎么把一个大的状态表示为两个或者多个已知的状态
+ * 以此题为例，设f[i][j]为最小的切点数，那么有：
+ * 1、s[i][j]为回文字符串，则f[i][j] = 0;
+ * 2、s[i][j]不是回文字符串，增加一个切点p，将s[i][j]切割为两端s[i][p]、s[p+1][j],则f[i][j] = f[i][p]+f[p+1][j]+1
+ *
+ * 所谓的状态转移方程就是上面的式子
+ * 接着来看看怎么组织程序，先看看状态转移的思路：
+ * 以"aab"为例，"aab"明显不是回文串
+ * 所以 f("aab") = min( (f("a")+f("ab")) , (f("aa")+f("b")) ) + 1;
+ * f("a") = 0;
+ * f("ab") = f("a")+f("b") +1  = 0+0+1 = 1;
+ * f("aa") = 0;
+ * f("b") = 0;
+ * 即f("aab") = 1;
+ */
+func MinCut0(src string) int {
+	length := len(src)
+	if length < 1 {
+		return 0
+	}
+	// init dp
+	dp := make([][]int, length)
+	for i := 0; i < length; i++ {
+		dp[i] = make([]int, length)
+	}
+
+	for gap := 0; gap <= length; gap++ {
+		for i, j := 0, gap; j < length; {
+			if isPalindrome(src[i : j+1]) {
+				dp[i][j] = 0
+			} else {
+				min := length - 1
+				for p := i; p < j; p++ {
+					a := dp[i][p]
+					b := dp[p+1][j]
+					a = a + b + 1
+					if min > a {
+						min = a
+					}
+				}
+				dp[i][j] = min
+			}
+
+			i++
+			j++
+		}
+	}
+	return dp[0][length-1]
 }
