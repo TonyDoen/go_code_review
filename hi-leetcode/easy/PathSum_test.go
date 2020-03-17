@@ -31,6 +31,7 @@ func buildTree() *Node {
 	return _5u
 }
 
+// PathSum
 func TestHasPathSum(t *testing.T) {
 	res := HasPathSum(buildTree(), 22)
 	println(res)
@@ -41,6 +42,7 @@ func TestHasPathSum1(t *testing.T) {
 	println(res)
 }
 
+// PathSum2
 func TestGetPathSum(t *testing.T) {
 	res := GetPathSum(buildTree(), 22)
 	tmp := res.Front()
@@ -73,6 +75,7 @@ func TestGetPathSum1(t *testing.T) {
 	}
 }
 
+// PathSum4
 func TestOtherPathSum(t *testing.T) {
 	arr := []int{113, 215, 221}
 	result := OtherPathSum(arr)

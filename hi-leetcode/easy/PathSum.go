@@ -239,3 +239,5 @@ func helpOtherPathSum(result *int, m map[int]*int, num, cur int) {
 		helpOtherPathSum(result, m, right, cur)
 	}
 }
+
+
