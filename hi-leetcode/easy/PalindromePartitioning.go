@@ -101,7 +101,7 @@ func MinCut(src string) int {
 	}
 	dp := make([]int, length)
 	for i := 0; i < length; i++ {
-		str := src[0:i+1]
+		str := src[0 : i+1]
 		if isPalindrome(str) {
 			dp[i] = 0
 		} else {
@@ -111,7 +111,7 @@ func MinCut(src string) int {
 			continue
 		}
 		for j := 1; j <= i; j++ {
-			subStr := src[j:i+1]
+			subStr := src[j : i+1]
 			if isPalindrome(subStr) {
 				dp[i] = min(dp[i], dp[j-1]+1)
 			} else {
