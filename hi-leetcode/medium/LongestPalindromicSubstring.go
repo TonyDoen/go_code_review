@@ -82,7 +82,7 @@ func LongestPalindromicSubstring2(src string) string {
 }
 func expandAroundCenter(src string, left, right int) int {
 	length := len(src)
-	for ; left >= 0 && right < length && src[left] == src[right]; {
+	for left >= 0 && right < length && src[left] == src[right] {
 		left--
 		right++
 	}
@@ -124,7 +124,7 @@ func LongestPalindromicSubstring3(src string) string {
 		}
 
 		// 在先前 计算的 回文长度 基础 上 扩展遍历
-		for ; i-halfLenArr[i] >= 0 && i+halfLenArr[i] < length && tmp[i-halfLenArr[i]] == tmp[i+halfLenArr[i]]; {
+		for i-halfLenArr[i] >= 0 && i+halfLenArr[i] < length && tmp[i-halfLenArr[i]] == tmp[i+halfLenArr[i]] {
 			halfLenArr[i] += 1
 		}
 		if halfLenArr[i]+i-1 > maxRight {

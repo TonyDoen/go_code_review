@@ -75,7 +75,7 @@ func getNext(p string) *[]int {
 			i++
 			j++
 			next[j] = i
-		} else {                     // 若p[i] ≠ p[j]，如果此时p[next[i]] == p[j]，则next[j+1] = next[i] + 1，否则继续递归前缀索引 i = next[i]，而后重复此过程。
+		} else { // 若p[i] ≠ p[j]，如果此时p[next[i]] == p[j]，则next[j+1] = next[i] + 1，否则继续递归前缀索引 i = next[i]，而后重复此过程。
 			i = next[i]
 		}
 	}
@@ -90,7 +90,7 @@ func getNext(p string) *[]int {
  * 只不过Sunday算法是从前往后匹配，在匹配失败时关注的是文本串中参加匹配的最末位字符的下一位字符。
  * 1. 如果该字符没有在模式串中出现则直接跳过，即移动位数 = 匹配串长度 + 1；
  * 2. 否则，其移动位数 = 模式串中最右端的该字符到末尾的距离+1。
- *    
+ *
  * 下面举个例子说明下Sunday算法。假定现在要在文本串"substring searching algorithm"中查找模式串"search"。
  */
 func SundayMatch(s, p string) int {
@@ -109,7 +109,7 @@ func SundayMatch(s, p string) int {
 				sj = sj + pLen + 1
 				si = sj
 				pi = 0
-			} else {           // 2. 否则，其移动位数 = 模式串中最右端的该字符到末尾的距离+1。
+			} else { // 2. 否则，其移动位数 = 模式串中最右端的该字符到末尾的距离+1。
 				sj = sj + last1Val
 				si = sj
 				pi = 0
@@ -123,10 +123,10 @@ func SundayMatch(s, p string) int {
 }
 func mapPattern(p string) *map[uint8]int {
 	m, length := make(map[uint8]int), len(p)
-	for i := length-1; i > -1; i-- {
+	for i := length - 1; i > -1; i-- {
 		c := p[i]
 		if 0 == m[c] {
-			m[c] = length-i
+			m[c] = length - i
 		}
 	}
 	return &m

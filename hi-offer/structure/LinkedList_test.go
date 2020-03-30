@@ -21,13 +21,13 @@ func TestPrintSingleLinkedList(t *testing.T) {
 	PrintSingleLinkedList(head)
 }
 
-func TestFindKth2Tail(t *testing.T)  {
+func TestFindKth2Tail(t *testing.T) {
 	head := prepareLinkedList()
 	res := FindKth2Tail(head, 2)
 	println(res.Value.(int))
 }
 
-func TestReverseSingleLinkedList(t *testing.T)  {
+func TestReverseSingleLinkedList(t *testing.T) {
 	head := prepareLinkedList()
 	res := ReverseSingleLinkedList(head)
 	for nil != res {
@@ -38,7 +38,7 @@ func TestReverseSingleLinkedList(t *testing.T)  {
 	println()
 }
 
-func TestMergeTwoNode(t *testing.T)  {
+func TestMergeTwoNode(t *testing.T) {
 	n1 := prepareLinkedList()
 	n2 := prepareLinkedList()
 	res := MergeTwoNode(n1, n2)
@@ -50,7 +50,7 @@ func TestMergeTwoNode(t *testing.T)  {
 	println()
 }
 
-func TestMergeKthNode(t *testing.T)  {
+func TestMergeKthNode(t *testing.T) {
 	lt := list.New()
 	for i := 0; i < 3; i++ {
 		lt.PushBack(prepareLinkedList())

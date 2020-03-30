@@ -1,6 +1,5 @@
 package medium
 
-
 import (
 	"fmt"
 	"testing"

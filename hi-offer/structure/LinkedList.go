@@ -4,7 +4,7 @@ import "container/list"
 
 type Node struct {
 	Value interface{}
-	Next *Node
+	Next  *Node
 }
 
 func NewNode(value interface{}, next *Node) *Node {
@@ -63,7 +63,7 @@ func FindKth2Tail(head *Node, k int) *Node {
 	}
 
 	second := head
-	for  {
+	for {
 		second = second.Next
 		first = first.Next
 		if nil == first {
@@ -140,7 +140,7 @@ func MergeTwoNode(n1, n2 *Node) *Node { // 递减
 }
 
 type ComplexNode struct {
-	Value interface{}
+	Value        interface{}
 	Next, Random *ComplexNode
 }
 
@@ -164,7 +164,7 @@ type ComplexNode struct {
  *    第三遍： 拆分原来的链表/clone链表
  *
  */
-func (cn *ComplexNode)Clone() *ComplexNode {
+func (cn *ComplexNode) Clone() *ComplexNode {
 	if nil == cn {
 		return nil
 	}
@@ -176,7 +176,7 @@ func (cn *ComplexNode)Clone() *ComplexNode {
 		cur.Next = cp
 		cur = next
 	}
-    // 2. 重新遍历链表，复制旧节点的随机指针给新节点
+	// 2. 重新遍历链表，复制旧节点的随机指针给新节点
 	cur = cn
 	for nil != cur {
 		if nil == cur.Random {

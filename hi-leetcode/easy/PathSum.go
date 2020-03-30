@@ -136,19 +136,19 @@ func GetPathSum1(root *Node, sum int) *list.List {
 
 	stack, path, cur, pre := list.New(), list.New(), root, root
 	for curSum := 0; nil != cur || stack.Len() > 0; {
-		for nil != cur {                          // 1. 当前节点cur只要不为空，先走到树的最左边节点(第一个while循环)；
+		for nil != cur { // 1. 当前节点cur只要不为空，先走到树的最左边节点(第一个while循环)；
 			stack.PushFront(cur)
 			path.PushBack(cur.Data)
 
 			curSum += cur.Data
 			cur = cur.Left
 		}
-		cur = stack.Front().Value.(*Node)         // 2. 然后取栈顶元素，但是此时还要继续判断栈顶的右孩子的左子树，
-		                                          //    此时不能pop()，因为有孩子还有可能也是有左子树的；
+		cur = stack.Front().Value.(*Node) // 2. 然后取栈顶元素，但是此时还要继续判断栈顶的右孩子的左子树，
+		//    此时不能pop()，因为有孩子还有可能也是有左子树的；
 
 		if nil != cur.Right && pre != cur.Right { // 3. pre节点的作用是为了回溯，记录前一个访问的节点，如果cur.right == pre，则说明右子树正在回溯，下面的已经访问完了；
 			cur = cur.Right
-		} else {                                  // 4. 右孩子为空　或者　已经访问过 此时先判断是否叶子 然后 开始回溯
+		} else { // 4. 右孩子为空　或者　已经访问过 此时先判断是否叶子 然后 开始回溯
 			if nil == cur.Left && nil == cur.Right && curSum == sum {
 				// copy path
 				one := list.New()
@@ -239,5 +239,3 @@ func helpOtherPathSum(result *int, m map[int]*int, num, cur int) {
 		helpOtherPathSum(result, m, right, cur)
 	}
 }
-
-

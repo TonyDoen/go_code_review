@@ -42,7 +42,7 @@ func TestMinCut(t *testing.T) {
 	println(res)
 }
 
-func TestMinCut0(t *testing.T)  {
+func TestMinCut0(t *testing.T) {
 	res := MinCut0("aab")
 	println(res)
 }

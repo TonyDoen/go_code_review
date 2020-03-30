@@ -22,22 +22,22 @@ func GiveCandy(ratings []int) int {
 		return 0
 	}
 	candies := make([]int, length)
-	for i := 0; i < length; i++ {          // 构建每个孩子拥有糖果数量的数组,初始化为1
+	for i := 0; i < length; i++ { // 构建每个孩子拥有糖果数量的数组,初始化为1
 		candies[i] = 1
 	}
-	for i := 1; i < length; i++ {          // 从左到右处理数组
+	for i := 1; i < length; i++ { // 从左到右处理数组
 		if ratings[i] > ratings[i-1] {
 			candies[i] = candies[i-1] + 1
 		}
 	}
 	sum := 0
-	for i := length-1; i > 0; i-- {        // 从右到左处理数组，并对数组中的元素求和，但是要记得最后加上第一个元素
-		if ratings[i-1] > ratings[i] {     // 如果左侧元素不大于右侧元素，则更新左侧元素为右侧元素+1
+	for i := length - 1; i > 0; i-- { // 从右到左处理数组，并对数组中的元素求和，但是要记得最后加上第一个元素
+		if ratings[i-1] > ratings[i] { // 如果左侧元素不大于右侧元素，则更新左侧元素为右侧元素+1
 			if candies[i-1] <= candies[i] {
 				candies[i-1] = candies[i] + 1
 			}
 		}
 		sum += candies[i]
 	}
-	return sum+candies[0]
+	return sum + candies[0]
 }

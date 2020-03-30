@@ -38,7 +38,7 @@ type UndirectedGraphNode struct {
 	Neighbors *list.List
 }
 
-func (node *UndirectedGraphNode)CloneGraph() *UndirectedGraphNode {
+func (node *UndirectedGraphNode) CloneGraph() *UndirectedGraphNode {
 	if nil == node {
 		return nil
 	}

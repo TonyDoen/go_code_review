@@ -43,11 +43,11 @@ package medium
 func CanCompleteCircuit(gas, cost []int) int {
 	rest, run, start, length := 0, 0, 0, len(gas)
 	for i := 0; i < length; i++ {
-		remain := gas[i]-cost[i]
+		remain := gas[i] - cost[i]
 		run += remain
 		rest += remain
 		if run < 0 {
-			start = i+1
+			start = i + 1
 			run = 0
 		}
 	}
@@ -57,4 +57,3 @@ func CanCompleteCircuit(gas, cost []int) int {
 		return start
 	}
 }
-
