@@ -30,3 +30,20 @@ func TestFirstNotRepeatingChar(t *testing.T) {
 	idx := FirstNotRepeatingChar(src)
 	println(idx)
 }
+
+func TestHasPath(t *testing.T) {
+	/**
+	 * a b c e
+	 * s f c s
+	 * a d e e
+	 */
+	matrix := [][]rune{{'a', 'b', 'c', 'e'}, {'s', 'f', 'c', 's'}, {'a', 'd', 'e', 'e'}}
+	target := []rune{'b', 'c', 'c', 'e', 'd'}
+	res := HasPath(matrix, target)
+	println(res)
+}
+
+func TestCountMove(t *testing.T) {
+	res := CountMove(18, 1000, 1000)
+	println(res)
+}
