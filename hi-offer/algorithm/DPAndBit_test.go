@@ -7,3 +7,9 @@ func TestFindGreatestSum(t *testing.T) {
 	res := FindGreatestSum(arr)
 	println(res)
 }
+
+func TestIsMatch(t *testing.T) {
+ 	s, p := "aa", "a*"
+	res := IsMatch(s, p)
+	println(res)
+}
