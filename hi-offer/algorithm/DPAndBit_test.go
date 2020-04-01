@@ -12,4 +12,8 @@ func TestIsMatch(t *testing.T) {
  	s, p := "aa", "a*"
 	res := IsMatch(s, p)
 	println(res)
+
+	res = IsMatch1(s, p)
+	println(res)
 }
+

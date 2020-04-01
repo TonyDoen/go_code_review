@@ -107,3 +107,46 @@ func IsMatch(s, p string) bool {
 	}
 	return firstMatch && IsMatch(s[1:], p[1:])
 }
+
+/**
+ * 字符串匹配类动态规划的一些注意事项：
+ * 1. 注意考虑是否需要考虑空串的情况，如果是的话，一般 DP 数组需要多开一格
+ * 2. 在考虑递推方程前，确定子问题的区间和遍历方向
+ * 3. 在思考递推方程的时候，重点思考当前子问题怎么变成之前求解过的子问题
+ */
+func IsMatch1(s, p string) bool {
+	if s == p {
+		return true
+	}
+	sLength, pLength := len(s), len(p)
+	// dp[i][j] => is s[0, i - 1] match p[0, j - 1] ?
+	dp := make([][]bool, sLength+1)
+	for i := 0; i < sLength+1; i++ {
+		dp[i] = make([]bool, pLength+1)
+	}
+
+	dp[0][0] = true
+	for i := 1; i <= pLength; i++ {
+		if '*' == p[i-1] {
+			dp[0][i] = dp[0][i-2]
+		} else {
+			dp[0][i] = false
+		}
+	}
+
+	for i := 1; i <= sLength; i++ {
+		for j := 1; j <= pLength; j++ {
+			if s[i-1] == p[j-1] || '.' == p[j-1] { // 看 s[0,...i-1] 和 p[0,...j-1]
+				dp[i][j] = dp[i-1][j-1]
+			}
+
+			if '*' == p[j-1] {
+				dp[i][j] = dp[i][j-2] // 看 s[0,...i] 和 p[0,...j-2]
+				if p[j-2] == s[i-1] || '.' == p[j-2] { // 看 s[0,...i-1] 和 p[0,...j]
+					dp[i][j] = dp[i-1][j]
+				}
+			}
+		}
+	}
+	return dp[sLength][pLength]
+}
