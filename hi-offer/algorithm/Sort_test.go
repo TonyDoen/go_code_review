@@ -15,3 +15,9 @@ func TestPermutation(t *testing.T) {
 	}
 	println(cnt)
 }
+
+func TestInversePair(t *testing.T) {
+	arr := []int{7, 5, 6, 4}
+	res := InversePair(arr)
+	println(res)
+}
