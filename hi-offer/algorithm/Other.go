@@ -1,6 +1,7 @@
 package algorithm
 
 import (
+	"container/list"
 	"math"
 	"strconv"
 	"strings"
@@ -14,7 +15,7 @@ import (
  *
  * 思路1:
  * 1. 从前往后遍历字符串，得到空格的数量。更新字符串的长度（扩容）。
- * 2. 从后往前替换字符串的话，每个字符串只需要移动一次；
+ * 2. 从后往前替换字符串的话，每个字符串只需要移动一次;
  */
 func ReplaceBlank20(src string) string {
 	length := 0
@@ -99,8 +100,8 @@ func OddBeforeEven2(arr []int) {
 /**
  * 只要不是特别大的内存开销，时间复杂度比较重要。因为改进时间复杂度对算法的要求更高
  *
- * 如果是顺序查找需要          O(N) 的时间；
- * 如果输入的是排序的数组则只需要 O(logN)的时间；
+ * 如果是顺序查找需要          O(N) 的时间;
+ * 如果输入的是排序的数组则只需要 O(logN)的时间;
  * 如果事先已经构造好了哈希表，那查找在 O(1) 时间就能完成。
  *
  * 028-数组中出现次数超过一半的数字
@@ -118,7 +119,7 @@ func OddBeforeEven2(arr []int) {
  * 前提：超过半数的数字存在
  * 数组中有一个数字出现的次数超过数组长度的一半，也就是说它出现的次数比其他所有数字出现次数的和还要多.
  * 因此我们可以考虑在遍历数组的时候保存两个值：一个是数组中的一个数字，一个是次数。
- * 1. 当我们遍历到下一个数字的时候，如果下一个数字和我们之前保存的数字相同，则次数加1；
+ * 1. 当我们遍历到下一个数字的时候，如果下一个数字和我们之前保存的数字相同，则次数加1;
  * 2. 如果下一个数字和我们之前保存的数字不同，则次数减1。
  * 3. 如果次数为零，我们需要保存下一个数字，并把次数设为1。
  *
@@ -183,7 +184,7 @@ func oddPartition(arr []int, left, right int) int {
 	return left
 }
 
-func OddQuickSort(arr []int, left, right int)  {
+func OddQuickSort(arr []int, left, right int) {
 	if left < right {
 		pivot := oddPartition(arr, left, right)
 		OddQuickSort(arr, left, pivot-1)
@@ -191,7 +192,7 @@ func OddQuickSort(arr []int, left, right int)  {
 	}
 }
 
-func PrintOddQuickSortNumber(arr []int)  {
+func PrintOddQuickSortNumber(arr []int) {
 	if nil == arr {
 		return
 	}
@@ -232,15 +233,15 @@ func GetUglyNumber(n int) int {
 
 		for x2 <= uglyNow {
 			p2++
-			x2 = arr[p2]*2
+			x2 = arr[p2] * 2
 		}
 		for x3 <= uglyNow {
 			p3++
-			x3 = arr[p3]*3
+			x3 = arr[p3] * 3
 		}
 		for x5 <= uglyNow {
 			p5++
-			x5 = arr[p5]*5
+			x5 = arr[p5] * 5
 		}
 	}
 	return arr[n-1]
@@ -254,4 +255,176 @@ func multiIntMin(arr ...int) int {
 		}
 	}
 	return result
+}
+
+/**
+ * 041-和为S的连续正数序列(滑动窗口思想)
+ *
+ * 小明很喜欢数学,有一天他在做数学作业时,要求计算出9~16的和,他马上就写出了正确答案是100。但是他并不满足于此,他在想究竟有多少种连续的正数序列的和为100(至少包括两个数)。
+ * 没多久,他就得到另一组连续正数和为100的序列:18,19,20,21,22。
+ * 现在把问题交给你,你能不能也很快的找出所有和为S的连续正数序列? Good Luck!
+ *
+ * 输出所有和为S的连续正数序列。序列内按照从小至大的顺序，序列间按照开始数字从小到大的顺序。
+ *
+ * 思路：
+ * 对于本题，由于是在一个连续序列中连续查找，可以使用类似滑动窗口的思想，使用双指针定位滑动窗口的上下边界，用两个数low和high分别指向当前序列中的最大和最小值，初始low为1，high为2。
+ * 如果从low到high的序列的和大于给定的S，那么说明可以去掉一个比较小的值，即增大low的值（相当于去掉了一个最小值，窗口收缩）。反之，如果从low到high的序列和小于给定的S，则应该增加一个值，即增大high（相当于窗口扩张，让这个窗口包含更多的值）。
+ * 这样依次查找就可以找到所有的满足条件的序列，并且符合序列内按照从小至大的顺序，序列间按照开始数字从小到大的顺序要求。
+ * 另外，需要注意的是：循环的结束条件。由于要求序列至少包含两个数，因此当low追上high或者当low超过S的一半时，即可停止查找。
+ */
+func FindContinuousSequence(sum int) *list.List {
+	// 思路：双指针滑动窗口
+	left, right, curSum, result := 1, 2, 1+2, list.New() // (至少包括两个数)
+	for left < right && left < (sum+1)/2 {
+		if curSum == sum {
+			curArr := make([]int, right-left+1)
+			for i := left; i <= right; i++ {
+				curArr[i-left] = i
+			}
+			result.PushBack(curArr)
+
+			curSum -= left
+			left++
+		} else if curSum > sum {
+			curSum -= left
+			left++
+		} else {
+			right++
+			curSum += right
+		}
+	}
+	return result
+}
+
+/**
+ * 042-和为S的两个数字(双指针思想)
+ *
+ * 输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，如果有多对数字的和等于S，输出两个数的乘积最小的。
+ *
+ * 思路一：
+ * 双层循环，暴力解法，得到所有两数之和，时间复杂度为O(n^2)。
+ *
+ * 思路二：
+ * 充分利用数组递增有序的特性，设置两指针到数组的两头，和大了，减小大指针，和小了，增大小指针，相等了返回，两指针相遇退出循环。
+ * 同理如果输出两个数的乘积最大的，则初始两指针指向中间两个数，往两边移动即可。
+ * tips:
+ * 1 + 9 = 5 + 5
+ * 1 * 9 < 5 * 5
+ */
+func FindNumberWithSum(arr []int, s int) (int, int) { // arr: 数组递增有序
+	if nil == arr || s < 1 {
+		return 0, 0
+	}
+	left, right := 0, len(arr)-1
+	for left < right {
+		sum := arr[left] + arr[right]
+		if sum < s {
+			left++
+		} else if sum > s {
+			right--
+		} else {
+			return arr[left], arr[right]
+		}
+	}
+	return 0, 0
+}
+
+/**
+ * 043-左旋转字符串(矩阵翻转)
+ *
+ * 汇编语言中有一种移位指令叫做循环左移（ROL），现在有个简单的任务，就是用字符串模拟这个指令的运算结果。对于一个给定的字符序列S，请你把其循环左移K位后的序列输出。
+ * 例如，字符序列S=”abcXYZdef”,要求输出循环左移3位后的结果，即“XYZdefabc”。
+ *
+ * 思路1：
+ * 借鉴矩阵论中的转秩思想，将字符转分为两部分，每个部分分别进行反转，然后再对整体进行一次反转，就可以完成本题的要求。
+ * eg:
+ *      1. abc XYZdef
+ *   => 2. cba fedZYX
+ *   => 3. XYZdef abc
+ *   => XYZdefabc(所求)
+ */
+func LeftRotateString(src string, n int) string {
+	length := len(src)
+	if n < 1 || length < 1 {
+		return src
+	}
+	if n >= length {
+		n = n % length
+	}
+	result := make([]rune, length)
+	for i, j := n-1, 0; i >= 0; i-- {
+		result[j] = rune(src[i])
+		j++
+	}
+	for i, j := length-1, n; i >= n; i-- {
+		result[j] = rune(src[i])
+		j++
+	}
+	for i, j := 0, length-1; i < j; {
+		tmp := result[i]
+		result[i] = result[j]
+		result[j] = tmp
+		i++
+		j--
+	}
+	return string(result)
+}
+
+/**
+ * 046-孩子们的游戏-圆圈中最后剩下的数(约瑟夫环)
+ *
+ * 有个游戏是这样的:首先,让小朋友们围成一个大圈。然后,他随机指定一个数m,让编号为0的小朋友开始报数。
+ * 每次喊到m-1的那个小朋友要出列唱首歌,然后可以在礼品箱中任意的挑选礼物,并且不再回到圈中,从他的下一个小朋友开始,继续0...m-1报数....
+ * 这样下去....直到剩下最后一个小朋友,可以不用表演,挑选礼物
+ *
+ * 思路2：利用链表，每次移动m-1次，删除元素即可
+ *
+ * 思路1：递推公式
+ *       f[1]=0;
+ *       f[i]=(f[i-1]+m)%i;  (i>1)
+ */
+func JosephusCircle(n, m int) int {
+	if n < 1 || m < 1 {
+		return -1
+	}
+	f := 0
+	for i := 2; i <= n; i++ {
+		f = (f+m)%i
+	}
+	return f
+}
+
+/**
+ * 051-构建乘积数组
+ *
+ * 给定一个数组A[0,1,...,n−1],请构建一个数组B[0,1,...,n−1],
+ * 其中B中的元素B[i]=A[0]*A[1]*...*A[i−1]*A[i+1]*...*A[n−1]。(跳过了A[i])不能使用除法。
+ *
+ * 思路1：暴力解法双层循环，时间复杂度O(n^2);空间复杂度O(1)。
+ *
+ * 思路2：
+ * 构建前向乘积数组 C[i]=A[0]*A[1]*...*A[i−1]
+ * 构建后向乘积数组 D[i]=A[n−1]*A[n−2]*...A[n−i+1]， 即 D[i]=D[i+1]*A[i+1]
+ * 通过 C[i],D[i] 来求 B[i];    B[i]=C[i]*D[i];   时间复杂度：O(n); 空间复杂度O(n)。
+ * 但是C与D数组的临时存储可全程用B来代替，因此可将空间复杂度降为O(1)。
+ */
+func ProductOfArray(arr []int) []int {
+	if nil == arr {
+		return nil
+	}
+	length := len(arr)
+	if length < 1 {
+		return nil
+	}
+	b := make([]int, length)
+	b[0] = 1
+	for i := 1; i < length; i++ { // C[i]=A[0]*A[1]*...*A[i−1]
+		b[i] = b[i-1]*arr[i-1]
+	}
+	tmp := 1
+	for i := length - 2; i >= 0; i-- { // D[i]=A[n−1]*A[n−2]*...A[n−i+1]
+		tmp = tmp*arr[i+1]
+		b[i] = b[i]*tmp
+	}
+	return b
 }
