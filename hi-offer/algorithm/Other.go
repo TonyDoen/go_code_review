@@ -389,7 +389,7 @@ func JosephusCircle(n, m int) int {
 	}
 	f := 0
 	for i := 2; i <= n; i++ {
-		f = (f+m)%i
+		f = (f + m) % i
 	}
 	return f
 }
@@ -419,12 +419,12 @@ func ProductOfArray(arr []int) []int {
 	b := make([]int, length)
 	b[0] = 1
 	for i := 1; i < length; i++ { // C[i]=A[0]*A[1]*...*A[i−1]
-		b[i] = b[i-1]*arr[i-1]
+		b[i] = b[i-1] * arr[i-1]
 	}
 	tmp := 1
 	for i := length - 2; i >= 0; i-- { // D[i]=A[n−1]*A[n−2]*...A[n−i+1]
-		tmp = tmp*arr[i+1]
-		b[i] = b[i]*tmp
+		tmp = tmp * arr[i+1]
+		b[i] = b[i] * tmp
 	}
 	return b
 }

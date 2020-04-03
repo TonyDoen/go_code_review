@@ -175,7 +175,7 @@ func hasPath(start, row, col, i, j int, visited []bool, target []rune, matrix []
 		return true
 	}
 
-	visited[idx] = true // 要走的第一个位置置为true，表示已经走过了
+	visited[idx] = true        // 要走的第一个位置置为true，表示已经走过了
 	for _, dir := range dirs { // 回溯，递归寻找，每次找到了就给k加一，找不到，还原
 		if hasPath(start+1, row, col, i+dir[0], j+dir[1], visited, target, matrix) {
 			return true

@@ -9,7 +9,7 @@ func TestPermutation(t *testing.T) {
 	res := Permutation(src)
 	cur, cnt := res.Front(), 0
 	for nil != cur {
-		print(cur.Value.(string)+" ")
+		print(cur.Value.(string) + " ")
 		cur = cur.Next()
 		cnt++
 	}
@@ -22,7 +22,7 @@ func TestInversePair(t *testing.T) {
 	println(res)
 }
 
-func TestQuickSort(t *testing.T)  {
+func TestQuickSort(t *testing.T) {
 	arr := []int{7, 5, 6, 4, 4, 3, 3, 8, 0, 9}
 	QuickSort(arr, 0, len(arr)-1)
 	for _, v := range arr {
@@ -31,7 +31,7 @@ func TestQuickSort(t *testing.T)  {
 	}
 }
 
-func TestFindKthNumber0(t *testing.T)  {
+func TestFindKthNumber0(t *testing.T) {
 	arr := []int{7, 5, 6, 4, 4, 3, 3, 8, 0, 9}
 	res := FindKthNumber0(arr, 5)
 	for _, v := range res {

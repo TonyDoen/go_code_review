@@ -12,7 +12,7 @@ func TestFibonacci2(t *testing.T) {
 	println(idx)
 }
 
-func TestFibonacci3(t *testing.T)  {
+func TestFibonacci3(t *testing.T) {
 	res := Fibonacci3(6)
 	println(res)
 }

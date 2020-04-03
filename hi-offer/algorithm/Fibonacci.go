@@ -100,7 +100,7 @@ func FreakJump1(n int) int {
 	if n < 3 {
 		return n
 	}
-	return 2*FreakJump1(n-1)
+	return 2 * FreakJump1(n-1)
 }
 func FreakJump2(n int) int {
 	if n < 3 {
@@ -123,7 +123,7 @@ func FreakJump2(n int) int {
  *
  * 动态规划算法求解此问题：
  * 1. 阶段划分，状态表示，
- * 2. 状态转移方程：F(n) = F(n-1) + F(n-2)           
+ * 2. 状态转移方程：F(n) = F(n-1) + F(n-2)
  * 3. 边界条件：F(0) = 0, F(1) = 1, F(2) = 2
  *
  * 状态转移方程的含义为 ：
@@ -142,7 +142,7 @@ func RectCover(n int) int {
 	dp[1] = 1
 	dp[2] = 2
 	for i := 3; i <= n; i++ {
-		dp[i] = dp[i-1]+dp[i-2]
+		dp[i] = dp[i-1] + dp[i-2]
 	}
 	return dp[n]
 }

@@ -195,7 +195,7 @@ func quickPartition(arr []int, left, right int) int {
  * 堆元素下标从0开始，习惯问题，此时除根节点外的任意节点的索引位置关系为
  * 父节点位置：ceiling(i/2) - 1; 左孩子：i*2 + 1; 右孩子：i*2 + 2; 最后一个分支节点位置为：n/2 - 1;
  */
-func FindKthNumber1(arr[]int, k int) []int {
+func FindKthNumber1(arr []int, k int) []int {
 	if nil == arr || k < 1 {
 		return nil
 	}
@@ -210,11 +210,11 @@ func FindKthNumber1(arr[]int, k int) []int {
 		result[i] = arr[i]
 	}
 
-	_1k := k-1
-	for i := (k-2)/2; i >= 0; i-- { // 构建堆
+	_1k := k - 1
+	for i := (k - 2) / 2; i >= 0; i-- { // 构建堆
 		downAdjust(result, i, _1k)
 	}
-	for i := k; i < length; i++ {   // 进行堆排序
+	for i := k; i < length; i++ { // 进行堆排序
 		if arr[i] < result[0] {
 			result[0] = arr[i]
 			downAdjust(result, 0, _1k)
