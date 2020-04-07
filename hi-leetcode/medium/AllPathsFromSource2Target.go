@@ -60,4 +60,3 @@ func helpAllPathsFromSource2Target0(cur int, graph [][]int) *list.List {
 	}
 	return res
 }
-

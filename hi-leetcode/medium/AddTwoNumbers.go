@@ -88,7 +88,7 @@ func AddTwoNumber2(l1, l2 *lNode) *lNode {
 	}
 
 	var result *lNode
-	for sum := 0; st1.Len()>0 || st2.Len() > 0; {
+	for sum := 0; st1.Len() > 0 || st2.Len() > 0; {
 		if st1.Len() > 0 {
 			front := st1.Front()
 			sum += front.Value.(int)
@@ -100,9 +100,9 @@ func AddTwoNumber2(l1, l2 *lNode) *lNode {
 			st2.Remove(front)
 		}
 		if nil == result {
-			result = &lNode{data: sum%10, next: nil}
+			result = &lNode{data: sum % 10, next: nil}
 		} else {
-			result = &lNode{data: sum%10, next: result}
+			result = &lNode{data: sum % 10, next: result}
 		}
 		sum /= 10
 	}
