@@ -3,10 +3,10 @@ package medium
 import "container/list"
 
 /**
- * All Paths From Source to Target
- *
  * url: https://leetcode.com/problems/all-paths-from-source-to-target/solution/
  * url: http://www.cnblogs.com/grandyang/p/9262159.html
+ *
+ * All Paths From Source to Target
  *
  * Given a directed, acyclic graph of N nodes.  Find all possible paths from node 0 to node N-1, and return them in any order.
  * The graph is given as follows:  the nodes are 0, 1, ..., graph.length - 1.  graph[i] is a list of all nodes j for which the edge (i, j) exists.
@@ -37,6 +37,7 @@ func AllPathsFromSource2Target0(graph [][]int) *list.List {
 	if nil == graph {
 		return nil
 	}
+	// 这么写的前提：从起点到目标点的路径一定存在
 	return helpAllPathsFromSource2Target0(0, graph)
 }
 func helpAllPathsFromSource2Target0(cur int, graph [][]int) *list.List {
@@ -59,4 +60,32 @@ func helpAllPathsFromSource2Target0(cur int, graph [][]int) *list.List {
 		}
 	}
 	return res
+}
+
+func AllPathsFromSource2Target1(graph [][]int) *list.List {
+	if nil == graph {
+		return nil
+	}
+	// 这么写的前提：从起点到目标点的路径一定存在
+	result := list.New()
+	helpAllPathsFromSource2Target1(result, list.New(), 0, graph)
+	return result
+}
+func helpAllPathsFromSource2Target1(result, path *list.List, cur int, graph [][]int) {
+	path.PushBack(cur)
+	if len(graph)-1 == cur { // 1. 如果cur等于N-1了，直接将cur先装入数组，再装入结果res中返回。
+		// clone path
+		l := list.New()
+		ft := path.Front()
+		for nil != ft {
+			l.PushBack(ft.Value.(int))
+			ft = ft.Next()
+		}
+		result.PushBack(l)
+	} else { // 2. 否则就遍历cur的邻接结点
+		for _, neighbor := range graph[cur] {
+			helpAllPathsFromSource2Target1(result, path, neighbor, graph)
+		}
+	}
+	path.Remove(path.Back()) // 恢复递归前的状态
 }
