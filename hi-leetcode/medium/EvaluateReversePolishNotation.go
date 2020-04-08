@@ -56,16 +56,16 @@ func EvaluateReversePolishNotation(arr []string) string {
 			second, first, result := listPop(stack).(int), listPop(stack).(int), 0
 			switch c {
 			case "+":
-				result = first+second
+				result = first + second
 				break
 			case "-":
-				result = first-second
+				result = first - second
 				break
 			case "*":
-				result = first*second
+				result = first * second
 				break
 			case "/":
-				result = first/second
+				result = first / second
 				break
 			}
 			stack.PushFront(result)
