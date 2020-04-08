@@ -24,6 +24,11 @@ func TestDifferentWaysToCompute2(t *testing.T) {
 }
 
 func printList(res *list.List) {
+	if nil == res {
+		println("[]")
+		return
+	}
+
 	print("[")
 	for cur := res.Front(); nil != cur; {
 		print(cur.Value.(int))

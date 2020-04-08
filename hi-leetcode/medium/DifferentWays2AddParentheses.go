@@ -72,7 +72,7 @@ func DifferentWaysToCompute(input string) *list.List {
 	return result
 }
 
-// 函数参数: 裸函数作为指针
+// 函数参数: 裸函数作为参数
 type DifferentWaysToComputeTemplate func(input string) *list.List
 
 func doDifferentWaysToCompute(result *list.List, input string, template DifferentWaysToComputeTemplate) {
