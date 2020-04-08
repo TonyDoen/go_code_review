@@ -92,6 +92,12 @@ func (s *Set) Contains(item interface{}) bool {
 func (s *Set) Size() int {
 	return len(s.m)
 }
+func (s *Set) Remove(items ...interface{}) error {
+	for _, item := range items {
+		delete(s.m, item)
+	}
+	return nil
+}
 func (s *Set) Clear() {
 	s.m = make(map[interface{}]struct{})
 }
