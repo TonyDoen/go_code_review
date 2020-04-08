@@ -247,7 +247,7 @@ func GetBestTimeToBuyAndSellStock30(prices []int, k int) int {
 		max := 0
 		for i := 1; i < length; i++ {
 			if prices[i] > prices[i-1] {
-				max += prices[i]-prices[i-1]
+				max += prices[i] - prices[i-1]
 			}
 		}
 		return max
@@ -262,13 +262,13 @@ func GetBestTimeToBuyAndSellStock30(prices []int, k int) int {
 		if -p > t[0][0] {
 			t[0][0] = -p
 		}
-		tp := t[0][0]+p
+		tp := t[0][0] + p
 		if tp > t[0][1] {
 			t[0][1] = tp
 		}
 
 		for i := 1; i < k; i++ {
-			it0 := t[i - 1][1] - p
+			it0 := t[i-1][1] - p
 			if it0 > t[i][0] {
 				t[i][0] = it0
 			}

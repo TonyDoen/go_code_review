@@ -1,6 +1,10 @@
 package medium
 
-import "fmt"
+import (
+	"container/list"
+	"fmt"
+	"strconv"
+)
 
 /**
   url: http://www.cnblogs.com/grandyang/p/8993143.html
@@ -86,6 +90,25 @@ func (n *Node) postOrder() { // 后序遍历
 	n.left.preOrder()
 	n.right.preOrder()
 	fmt.Printf("%d ", n.data) // visit
+}
+func (n *Node) levelOrder() { // 层序遍历（层次）
+	queue := list.New()
+	for queue.PushBack(n); queue.Len() > 0; {
+		front := queue.Front()
+		node := front.Value.(*Node)
+		queue.Remove(front)
+
+		print("{data:" + strconv.Itoa(node.data))
+		if nil != node.left {
+			queue.PushBack(node.left)
+			print("; left:" + strconv.Itoa(node.left.data))
+		}
+		if nil != node.right {
+			queue.PushBack(node.right)
+			print("; right:" + strconv.Itoa(node.right.data))
+		}
+		println("}")
+	}
 }
 
 func SplitBST1(root *Node, v int) *[2]*Node {

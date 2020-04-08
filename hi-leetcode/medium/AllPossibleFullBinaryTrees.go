@@ -86,7 +86,7 @@ func AllPossibleFullBinaryTree0(n int) *list.List {
 	}
 	result := list.New()
 	if 1 == n {
-		result.PushBack(&TreeNode{Val: 0, Left: nil, Right: nil})
+		result.PushBack(&TreeNode{Value: 0, Left: nil, Right: nil})
 		return result
 	}
 	for i := 1; i < n; i += 2 {
@@ -98,7 +98,7 @@ func AllPossibleFullBinaryTree0(n int) *list.List {
 		// 之后要做的就是从这两个数组中任意取两个结点，加到一个新建的 cur 结点的左右子结点上，然后将 cur 结点存入结果 res 中
 		for lFront := left.Front(); nil != lFront; lFront = lFront.Next() {
 			for rFront := right.Front(); nil != rFront; rFront = rFront.Next() {
-				result.PushBack(&TreeNode{Val: 0, Left: lFront.Value.(*TreeNode), Right: rFront.Value.(*TreeNode)})
+				result.PushBack(&TreeNode{Value: 0, Left: lFront.Value.(*TreeNode), Right: rFront.Value.(*TreeNode)})
 			}
 		}
 	}
@@ -117,7 +117,7 @@ func AllPossibleFullBinaryTree1(n int) *list.List {
 	}
 	result := list.New()
 	if 1 == n {
-		result.PushBack(&TreeNode{Val: 0, Left: nil, Right: nil})
+		result.PushBack(&TreeNode{Value: 0, Left: nil, Right: nil})
 		return result
 	}
 	// 优化1.1
@@ -134,7 +134,7 @@ func AllPossibleFullBinaryTree1(n int) *list.List {
 		// 对其分别对p和q调用递归函数，得到两个数组，数组里面的就是所有可能情况的左右子树的根结点。
 		for lFront := left.Front(); nil != lFront; lFront = lFront.Next() {
 			for rFront := right.Front(); nil != rFront; rFront = rFront.Next() {
-				result.PushBack(&TreeNode{Val: 0, Left: lFront.Value.(*TreeNode), Right: rFront.Value.(*TreeNode)})
+				result.PushBack(&TreeNode{Value: 0, Left: lFront.Value.(*TreeNode), Right: rFront.Value.(*TreeNode)})
 			}
 		}
 	}
