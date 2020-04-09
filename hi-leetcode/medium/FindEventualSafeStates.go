@@ -43,29 +43,29 @@ func EventualSafeNodes2(graph [][]int) *list.List {
 			direct[from] = NewSet()
 		}
 		for _, to := range graph[from] {
-			_ = direct[from].Add(to)
+			_ = direct[from].Add(to) // from -> to
 
 			if nil == reverse[to] {
 				reverse[to] = NewSet()
 			}
-			_ = reverse[to].Add(from)
+			_ = reverse[to].Add(from) // from <- to
 		}
 	}
 
 	for queue.Len() > 0 {
 		front := queue.Front()
-		source := front.Value.(int)
+		_0 := front.Value.(int)
 		queue.Remove(front)
 
-		safe[source] = true
-		fromSet := reverse[source]
-		if nil == fromSet {
+		safe[_0] = true
+		rSet := reverse[_0] // from <- to
+		if nil == rSet {
 			continue
 		}
-		for key := range fromSet.m {
-			dt := direct[key.(int)]
-			_ = dt.Remove(source)
-			if dt.Size() < 1 {
+		for key := range rSet.m {
+			dSet := direct[key.(int)] // from -> to
+			_ = dSet.Remove(_0)
+			if dSet.Size() < 1 {
 				queue.PushBack(key.(int))
 			}
 		}
