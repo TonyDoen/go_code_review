@@ -21,5 +21,5 @@ url: https://mp.weixin.qq.com/s/AWsL7G89RtaHyHjRPNJENA
 
 [信封嵌套问题](https://mp.weixin.qq.com/s?__biz=MzAxODQxMDM0Mw==&mid=2247484494&idx=1&sn=0e90d7fbf812fd1f4c408b5cc5fdf8c6&chksm=9bd7fa46aca07350f626e2365d9f71545aa304725b7122b5a44bcfd90cf0506c9036201f3b38&scene=21#wechat_redirect)
 
-[`_00001`](./LCNOT/_00001.go); [`_00002`](./LCNOT/_00002.go); 
+[`LT0001`](./LCNOT/LT0001.go); [`LT0002`](./LCNOT/LT0002.go); 
 
