@@ -14,3 +14,7 @@ url: https://mp.weixin.qq.com/s/AWsL7G89RtaHyHjRPNJENA
 [BFS 算法解题套路框架](https://mp.weixin.qq.com/s?__biz=MzAxODQxMDM0Mw==&mid=2247485134&idx=1&sn=fd345f8a93dc4444bcc65c57bb46fc35&chksm=9bd7f8c6aca071d04c4d383f96f2b567ad44dc3e67d1c3926ec92d6a3bcc3273de138b36a0d9&scene=21#wechat_redirect)
 
 [`LC0111`](./LC0111.go); [`LC0752`](./LC0752.go);
+
+[我写了首诗，让你闭着眼睛也能写对二分搜索](https://mp.weixin.qq.com/s?__biz=MzAxODQxMDM0Mw==&mid=2247485044&idx=1&sn=e6b95782141c17abe206bfe2323a4226&chksm=9bd7f87caca0716aa5add0ddddce0bfe06f1f878aafb35113644ebf0cf0bfe51659da1c1b733&scene=21#wechat_redirect)
+
+[`_00000`](./LCNOT/LT0000.go); 
