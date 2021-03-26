@@ -55,7 +55,7 @@ import (
 func RemoveCoveredIntervals(intvs [][]int) int {
 	// 按照起点升序排列，起点相同同时按照终点降序排列
 	// 保证长的区域在上面，这样才会被判定为覆盖。
-    // 复用上面的信封封装逻辑
+	// 复用上面的信封封装逻辑
 	var es, err = NewEnvelopes(intvs)
 	if nil != err {
 		return -1
@@ -83,7 +83,6 @@ func RemoveCoveredIntervals(intvs [][]int) int {
 	}
 	return length - rs
 }
-
 
 /**
  * 区间合并问题
@@ -129,7 +128,6 @@ func MergeCoveredIntervals(intvs [][]int) *list.List {
 	return rs
 }
 
-
 /**
  * 区间交集问题
  * LeetCode 986
@@ -169,7 +167,7 @@ func MergeCoveredIntervals(intvs [][]int) *list.List {
  */
 func IntervalIntersection(a, b [][]int) *list.List {
 	var rs = list.New()
-	for i, j, aLength, bLength:=0, 0, len(a), len(b); i < aLength && j < bLength; {
+	for i, j, aLength, bLength := 0, 0, len(a), len(b); i < aLength && j < bLength; {
 		var a0, a1, b0, b1 = a[i][0], a[i][1], b[j][0], b[j][1]
 		if b1 < a0 || a1 < b0 {
 			// nothing

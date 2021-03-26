@@ -62,7 +62,7 @@ func MinDepth(node *TreeNode) int {
 	q.PushBack(node)
 	var depth = 1 // root node is first level, then depth = 1
 
-	for ; q.Len() > 0; {
+	for q.Len() > 0 {
 		var sz = q.Len()
 		// expand from this node
 		for i := 0; i < sz; i++ {

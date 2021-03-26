@@ -81,7 +81,7 @@ func lengthOfLIS(nums []int) int {
 		var p = nums[i] // this digit is needed to handle
 		var left, right = 0, piles
 		// binary search insertion position
-		for ; left < right; {
+		for left < right {
 			var mid = (left + right) / 2
 			if top[mid] >= p {
 				right = mid

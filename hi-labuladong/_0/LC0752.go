@@ -49,7 +49,7 @@ func Unlock(deadEnds *hard.Set, target string) int {
 	q.PushBack("0000")
 
 	var step = 0
-	for ; q.Len() > 0; {
+	for q.Len() > 0 {
 		var sz = q.Len()
 		// expand from this node
 		for i := 0; i < sz; i++ {

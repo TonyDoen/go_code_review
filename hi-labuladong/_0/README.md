@@ -19,7 +19,7 @@ url: https://mp.weixin.qq.com/s/AWsL7G89RtaHyHjRPNJENA
 
 [`LT0000`](./LCNOT/LT0000.go); 
 
-[信封嵌套问题](https://mp.weixin.qq.com/s?__biz=MzAxODQxMDM0Mw==&mid=2247484494&idx=1&sn=0e90d7fbf812fd1f4c408b5cc5fdf8c6&chksm=9bd7fa46aca07350f626e2365d9f71545aa304725b7122b5a44bcfd90cf0506c9036201f3b38&scene=21#wechat_redirect)
+[我写了首诗，把滑动窗口算法算法变成了默写题](https://mp.weixin.qq.com/s?__biz=MzAxODQxMDM0Mw==&mid=2247485141&idx=1&sn=0e4583ad935e76e9a3f6793792e60734&chksm=9bd7f8ddaca071cbb7570b2433290e5e2628d20473022a5517271de6d6e50783961bebc3dd3b&scene=21#wechat_redirect)
 
-[`LT0001`](./LCNOT/LT0001.go); [`LT0002`](./LCNOT/LT0002.go); 
+[`LC0076`](./LC0076.go); [`LC0567`](./LC0567.go); [`LC0438`](./LC0438.go); [`LC0003`](./LC0003.go); [`LT0003`](./LCNOT/LT0003.go); 
 

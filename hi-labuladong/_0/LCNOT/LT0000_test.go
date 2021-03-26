@@ -47,4 +47,3 @@ func TestRightBinarySearch1(t *testing.T) {
 	var rs = RightBinarySearch1(nums, target)
 	fmt.Printf("%d\n", rs)
 }
-
