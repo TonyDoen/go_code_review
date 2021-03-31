@@ -1,5 +1,7 @@
 package LCNOT
 
+import "math"
+
 /*
  * 滑动窗口模板
  *
@@ -98,18 +100,43 @@ package LCNOT
  *
  *
  */
-//func LongestSubarray(nums []int, limit int) int {
-//	var window, left, right, rs = make(map[int]int), 0, 0, 0
-//	for nLength := len(nums); right < nLength; {
-//		var ir = nums[right]
-//		right++
-//
-//		// 进行窗口内数据的一系列更新
-//		window[ir]++
-//
-//		// 判断左侧窗口是否收缩
-//		for ; window; {
-//
-//		}
-//	}
-//}
+func LongestSubarray1(nums []int, limit int) int {
+	var n, h1, h2, t1, t2, left, right, result = len(nums), 0, 0, -1, -1, 0, 0, 0
+	var maxq, minq = make([]int, n), make([]int, n)
+
+	for ; right < n; {
+		for ; h1 <= t1 && nums[maxq[t1]] < nums[right]; {
+			t1--
+		}
+		for ; h2 <= t2 && nums[minq[t2]] > nums[right]; {
+			t2--
+		}
+		t1++
+		maxq[t1] = right
+		t2++
+		minq[t2] = right
+		right++
+
+		for ; nums[maxq[h1]] - nums[minq[h2]] > limit; {
+			left++
+			if left > maxq[h1] {
+				h1++
+			}
+			if left > minq[h2] {
+				h2++
+			}
+		}
+		result = max(result, right-left)
+	}
+	return result
+}
+
+func max(args ...int) int {
+	var rs = math.MinInt64
+	for _, v := range args {
+		if rs < v {
+			rs = v
+		}
+	}
+	return rs
+}
